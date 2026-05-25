@@ -278,7 +278,11 @@
             <a class="phone-link secondary-contact" href="tel:+2348030598899">Call administrative office</a>
           </div>
         </div>
-        <form class="contact-form" action="#contact" method="post" data-contact-form>
+        <form class="contact-form" name="enquiries" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field" data-contact-form>
+          <input type="hidden" name="form-name" value="enquiries">
+          <p class="hidden-field">
+            <label>Do not fill this out if you are human <input name="bot-field"></label>
+          </p>
           <label class="form-field">
             <span>Name</span>
             <input type="text" name="name" autocomplete="name" required>

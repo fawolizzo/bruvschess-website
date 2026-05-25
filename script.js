@@ -1,6 +1,5 @@
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".site-nav");
-const contactForm = document.querySelector("[data-contact-form]");
 
 if (navToggle) {
   navToggle.addEventListener("click", () => {
@@ -16,13 +15,5 @@ if (nav) {
       navToggle.setAttribute("aria-expanded", "false");
       document.body.classList.remove("nav-open");
     }
-  });
-}
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    contactForm.querySelector(".form-note").textContent =
-      "Thanks. Connect this form to your preferred email or CRM before launch.";
   });
 }
