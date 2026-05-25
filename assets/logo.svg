@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">BruvsChess Educational Services logo</title>
+  <desc id="desc">A circular purple and gold chess education logo with a knight emblem.</desc>
+  <defs>
+    <path id="topText" d="M 155 272 A 150 150 0 0 1 445 272"/>
+    <path id="bottomText" d="M 455 328 A 160 160 0 0 1 145 328"/>
+    <linearGradient id="purple" x1="160" y1="150" x2="440" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#342594"/>
+      <stop offset="1" stop-color="#21156f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="150" y1="140" x2="450" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9bd76"/>
+      <stop offset="0.5" stop-color="#b58b3d"/>
+      <stop offset="1" stop-color="#e1c984"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="300" cy="300" r="223" fill="#ffffff"/>
+  <circle cx="300" cy="300" r="218" fill="none" stroke="#2b2187" stroke-width="8"/>
+  <circle cx="300" cy="300" r="141" fill="url(#purple)"/>
+
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="url(#gold)" letter-spacing="8">
+    <textPath href="#topText" startOffset="50%" text-anchor="middle">BRUVSCHESS</textPath>
+  </text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="url(#gold)" letter-spacing="7">
+    <textPath href="#bottomText" startOffset="50%" text-anchor="middle">EDUCATIONAL SERVICES</textPath>
+  </text>
+
+  <text x="112" y="304" text-anchor="middle" dominant-baseline="middle" font-size="43" fill="#2b2187">★</text>
+  <text x="488" y="304" text-anchor="middle" dominant-baseline="middle" font-size="43" fill="#2b2187">★</text>
+
+  <path
+    fill="#ffffff"
+    d="M259 164c24 3 54 13 82 36 26 21 56 52 88 95-53-7-101 1-142 23-13 7-24 14-34 23 0-27-6-57-24-68-16-10-41 1-64 19-20 16-47 12-60-8-12-20-5-43 17-57 34-22 41-35 50-60 9-27 29-43 61-48l1-41 23 39 2-39z"
+  />
+  <path
+    fill="url(#gold)"
+    d="M296 357c46-31 94-45 144-42-2 13-6 26-12 38-39-3-78 9-115 35l-16 47z"
+  />
+</svg>
