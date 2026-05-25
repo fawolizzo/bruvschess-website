@@ -1009,6 +1009,19 @@ h3 {
     padding: 0.9rem 0;
   }
 
+  .site-nav .nav-call {
+    margin-top: 0.4rem;
+    padding: 0.7rem 0.85rem;
+    min-height: 44px;
+    align-self: flex-start;
+    font-size: 0.95rem;
+  }
+
+  .site-nav .nav-call img {
+    width: 19px;
+    height: 19px;
+  }
+
   .nav-open .site-nav {
     display: flex;
   }
