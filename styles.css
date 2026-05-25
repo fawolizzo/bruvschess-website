@@ -151,6 +151,7 @@ textarea {
   border-radius: 7px;
   box-shadow: 0 12px 24px rgba(31, 157, 85, 0.18);
   font-weight: 900;
+  white-space: nowrap;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -799,6 +800,117 @@ h3 {
   color: rgba(251, 248, 239, 0.7);
 }
 
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.6fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  padding: clamp(4rem, 9vw, 7rem) clamp(1rem, 4vw, 4.5rem);
+  background:
+    linear-gradient(135deg, rgba(43, 33, 135, 0.94), rgba(18, 103, 95, 0.94)),
+    var(--purple);
+  color: #fbf8ef;
+}
+
+.about-hero h1 {
+  max-width: 12ch;
+  font-size: clamp(3.5rem, 8vw, 6.4rem);
+}
+
+.about-hero .eyebrow,
+.about-hero .lede {
+  color: rgba(251, 248, 239, 0.82);
+}
+
+.about-logo-panel {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: clamp(1rem, 5vw, 2.5rem);
+  background: #fbf8ef;
+  border: 1px solid rgba(251, 248, 239, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(12, 10, 34, 0.22);
+}
+
+.about-logo-panel img {
+  width: min(100%, 280px);
+  height: auto;
+}
+
+.about-story {
+  background: linear-gradient(180deg, #fbf8ef 0%, #fffaf0 100%);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.65fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.story-main {
+  display: grid;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.16rem);
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.story-main p {
+  margin: 0;
+}
+
+.story-timeline {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.story-timeline div,
+.value-grid article {
+  padding: 1.1rem;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(23, 20, 46, 0.06);
+}
+
+.story-timeline span,
+.value-grid span {
+  color: var(--teal-dark);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.story-timeline strong,
+.value-grid h3 {
+  display: block;
+  margin: 0.35rem 0 0.45rem;
+  color: var(--purple-dark);
+  font-size: 1.05rem;
+}
+
+.story-timeline p,
+.value-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.about-values {
+  background: #f3eee3;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .team-hero {
   padding: clamp(4rem, 9vw, 7rem) clamp(1rem, 4vw, 4.5rem);
   background:
@@ -958,7 +1070,8 @@ h3 {
   .hero,
   .intro,
   .method,
-  .contact {
+  .contact,
+  .story-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1034,11 +1147,25 @@ h3 {
     font-size: clamp(3rem, 17vw, 4.7rem);
   }
 
+  .about-hero h1 {
+    font-size: clamp(2.8rem, 12vw, 4.25rem);
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about-logo-panel {
+    width: min(100%, 360px);
+    justify-self: start;
+  }
+
   .hero-stats,
   .school-list,
   .card-grid,
   .state-grid,
-  .team-grid {
+  .team-grid,
+  .value-grid {
     grid-template-columns: 1fr;
   }
 
