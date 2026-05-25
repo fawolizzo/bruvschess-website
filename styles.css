@@ -686,11 +686,6 @@ h3 {
   font-size: 1rem;
 }
 
-.footer-whatsapp {
-  min-height: 40px;
-  padding: 0.55rem 0.8rem;
-}
-
 .contact-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -798,11 +793,6 @@ h3 {
 .site-footer p {
   margin: 0;
   color: rgba(251, 248, 239, 0.72);
-}
-
-.site-footer > a:not(.brand):not(.whatsapp-button) {
-  color: var(--gold-soft);
-  font-weight: 800;
 }
 
 .footer-brand small {
