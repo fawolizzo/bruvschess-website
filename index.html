@@ -70,6 +70,7 @@
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#contact">Start a program</a>
+            <a class="button secondary" href="#private-lessons">Book private lesson</a>
             <a class="button secondary" href="#programs">Explore classes</a>
           </div>
           <dl class="hero-stats" aria-label="Program highlights">
@@ -211,6 +212,7 @@
               Focused one-on-one and small-group coaching for students preparing for tournaments or
               deeper study.
             </p>
+            <a class="text-link" href="#private-lessons">Book private lessons</a>
           </article>
           <article class="program-card">
             <span class="card-icon">05</span>
@@ -221,6 +223,98 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="section private-lessons" id="private-lessons" aria-labelledby="private-lessons-title">
+        <div class="private-lessons-copy">
+          <p class="eyebrow">Private lessons</p>
+          <h2 id="private-lessons-title">Book a private chess lesson request.</h2>
+          <p>
+            Private lessons are arranged after we understand the learner's age, level, location,
+            preferred schedule, and learning goals. Submit the request first; our team will confirm
+            the lesson plan, availability, and fee before payment.
+          </p>
+          <div class="booking-steps" aria-label="Private lesson booking steps">
+            <div>
+              <span>01</span>
+              <strong>Send request</strong>
+              <p>Tell us about the learner and preferred lesson format.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <strong>Get confirmation</strong>
+              <p>We review availability, recommend the right plan, and confirm pricing.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <strong>Pay securely</strong>
+              <p>Use Paystack only after your lesson plan has been confirmed.</p>
+            </div>
+          </div>
+          <a class="button secondary paystack-link" href="https://paystack.shop/pay/bruvschess" target="_blank" rel="noreferrer">Pay after confirmation</a>
+        </div>
+
+        <form class="contact-form booking-form" name="private-lessons" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="private-lessons">
+          <p class="hidden-field">
+            <label>Do not fill this out if you are human <input name="bot-field"></label>
+          </p>
+          <label class="form-field">
+            <span>Parent or learner name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="form-field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label class="form-field">
+            <span>Phone number</span>
+            <input type="tel" name="phone" autocomplete="tel" required>
+          </label>
+          <label class="form-field">
+            <span>Learner age or class</span>
+            <input type="text" name="learner_age_or_class" placeholder="Age 8, Primary 4, SS1, adult beginner, etc." required>
+          </label>
+          <label class="form-field">
+            <span>Current chess level</span>
+            <select name="chess_level" required>
+              <option value="">Select one</option>
+              <option>Complete beginner</option>
+              <option>Knows the basic moves</option>
+              <option>Plays casually</option>
+              <option>School club player</option>
+              <option>Tournament preparation</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Lesson format</span>
+            <select name="lesson_format" required>
+              <option value="">Select one</option>
+              <option>In-person private lesson</option>
+              <option>Online private lesson</option>
+              <option>Small group lesson</option>
+              <option>Evaluation lesson first</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>State or location</span>
+            <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
+          </label>
+          <label class="form-field">
+            <span>Number of learners</span>
+            <input type="number" name="learners" min="1" placeholder="1" required>
+          </label>
+          <label class="form-field form-field-wide">
+            <span>Preferred days and time</span>
+            <input type="text" name="preferred_schedule" placeholder="Saturdays, weekdays after school, online evenings, etc." required>
+          </label>
+          <label class="form-field form-field-wide">
+            <span>Learning goal</span>
+            <textarea name="learning_goal" rows="5" placeholder="Tell us what you want to achieve: confidence, evaluation, tournament prep, school support, opening study, etc." required></textarea>
+          </label>
+          <button class="button primary" type="submit">Request private lesson</button>
+        </form>
       </section>
 
       <section class="section schools" id="schools" aria-labelledby="schools-title">

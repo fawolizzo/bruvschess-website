@@ -403,6 +403,8 @@ h3 {
 }
 
 .program-card {
+  display: flex;
+  flex-direction: column;
   min-height: 260px;
   padding: 1.35rem;
 }
@@ -424,6 +426,74 @@ h3 {
 .method-copy p,
 .contact-panel p {
   color: var(--muted);
+}
+
+.program-card .text-link {
+  margin-top: auto;
+}
+
+.private-lessons {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+  background:
+    linear-gradient(180deg, rgba(251, 248, 239, 0.96), rgba(243, 238, 227, 0.96)),
+    #fbf8ef;
+}
+
+.private-lessons-copy {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.private-lessons-copy p {
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.booking-steps {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.booking-steps div {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(19, 32, 27, 0.05);
+}
+
+.booking-steps span {
+  color: var(--teal-dark);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.booking-steps strong {
+  display: block;
+  margin: 0.25rem 0;
+  color: var(--purple-dark);
+  font-size: 1rem;
+}
+
+.booking-steps p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.paystack-link {
+  justify-self: start;
+}
+
+.booking-form {
+  background: rgba(255, 255, 255, 0.86);
 }
 
 .footprint {
@@ -1071,8 +1141,13 @@ h3 {
   .intro,
   .method,
   .contact,
+  .private-lessons,
   .story-grid {
     grid-template-columns: 1fr;
+  }
+
+  .private-lessons-copy {
+    position: static;
   }
 
   .hero {
