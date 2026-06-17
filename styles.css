@@ -502,7 +502,7 @@ h3 {
 
 .state-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 1rem;
 }
 
@@ -511,7 +511,7 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   gap: 0.8rem;
-  min-height: 150px;
+  min-height: 190px;
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.76);
   border: 1px solid var(--line);
@@ -553,12 +553,36 @@ h3 {
 }
 
 .national-card {
-  min-height: 220px;
+  min-height: 190px;
+}
+
+.state-card-heading {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.state-card-heading span,
+.state-card-heading small {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.state-card-heading span {
+  font-size: 0.78rem;
+}
+
+.state-card-heading small {
+  font-size: 0.76rem;
 }
 
 .state-card span {
   display: block;
-  margin-bottom: 0.4rem;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 900;
@@ -572,11 +596,14 @@ h3 {
   line-height: 1;
 }
 
-.state-card-osun span,
+.state-card-osun .state-card-heading span,
+.state-card-osun .state-card-heading small,
 .state-card-osun strong,
-.state-card-advisory span,
+.state-card-advisory .state-card-heading span,
+.state-card-advisory .state-card-heading small,
 .state-card-advisory strong,
-.state-card.headquarter span,
+.state-card.headquarter .state-card-heading span,
+.state-card.headquarter .state-card-heading small,
 .state-card.headquarter strong {
   color: inherit;
 }
@@ -607,7 +634,10 @@ h3 {
 
 .state-lead b {
   color: var(--purple-ink);
+  overflow: hidden;
   line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .state-lead small {
