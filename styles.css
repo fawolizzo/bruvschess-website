@@ -564,21 +564,19 @@ h3 {
 .state-card-heading span,
 .state-card-heading small {
   display: block;
-  overflow: hidden;
   color: var(--muted);
   font-weight: 900;
   line-height: 1.1;
-  text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .state-card-heading span {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 
 .state-card-heading small {
-  font-size: 0.76rem;
+  font-size: 0.72rem;
 }
 
 .state-card span {
@@ -634,9 +632,7 @@ h3 {
 
 .state-lead b {
   color: var(--purple-ink);
-  overflow: hidden;
   line-height: 1.1;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -1045,7 +1041,7 @@ h3 {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1122,23 +1118,32 @@ h3 {
 
 .team-role {
   color: var(--teal-dark);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.team-location {
+.team-location,
+.team-scope {
   margin-top: 0.2rem;
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 900;
+  white-space: nowrap;
+}
+
+.team-scope {
+  color: var(--muted);
+  text-transform: uppercase;
 }
 
 .team-card-body h3 {
   margin: 0.65rem 0 0.7rem;
-  font-size: 1.2rem;
+  font-size: 1.16rem;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .team-card-body p {
