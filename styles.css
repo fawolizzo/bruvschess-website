@@ -541,6 +541,12 @@ h3 {
   border-color: #d8ddeb;
 }
 
+.state-card-advisory {
+  color: #fbf8ef;
+  background: linear-gradient(135deg, #0f766e, #17142e);
+  border-color: rgba(251, 248, 239, 0.18);
+}
+
 .state-card-edo {
   background: linear-gradient(135deg, #fff7ed, #f2dcc2);
   border-color: #e5c7a5;
@@ -568,6 +574,8 @@ h3 {
 
 .state-card-osun span,
 .state-card-osun strong,
+.state-card-advisory span,
+.state-card-advisory strong,
 .state-card.headquarter span,
 .state-card.headquarter strong {
   color: inherit;
@@ -611,12 +619,15 @@ h3 {
 }
 
 .state-card-osun .state-lead,
+.state-card-advisory .state-lead,
 .state-card.headquarter .state-lead {
   border-color: rgba(251, 248, 239, 0.26);
 }
 
 .state-card-osun .state-lead b,
 .state-card-osun .state-lead small,
+.state-card-advisory .state-lead b,
+.state-card-advisory .state-lead small,
 .state-card.headquarter .state-lead b,
 .state-card.headquarter .state-lead small {
   color: #fbf8ef;
@@ -1002,10 +1013,33 @@ h3 {
   background: linear-gradient(180deg, #fbf8ef 0%, #f7efe0 100%);
 }
 
+.team-subheading {
+  max-width: 720px;
+  margin: 0 0 1.1rem;
+}
+
+.team-subheading h3 {
+  margin: 0.25rem 0 0;
+  color: var(--purple-dark);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.state-team-heading {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.national-team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.state-team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .team-card {
@@ -1035,6 +1069,10 @@ h3 {
   height: 5px;
   content: "";
   background: linear-gradient(90deg, var(--teal), var(--gold-bright), var(--purple));
+}
+
+.advisory-card::before {
+  background: linear-gradient(90deg, var(--gold-bright), var(--teal), var(--purple-dark));
 }
 
 .team-card:hover {
