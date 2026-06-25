@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css?v=team-compact">
@@ -377,19 +377,32 @@
             <h2 id="contact-title">Invite BruvsChess for lessons, clubs, or events.</h2>
             <p>
               Tell us who the lessons are for, where you are located, and the format you need.
-              We support schools, parents, individuals, private groups, and evaluation lessons.
+              We support:
             </p>
+            <div class="support-chips" aria-label="Programs and learner groups we support">
+              <span>Schools</span>
+              <span>Parents</span>
+              <span>Individuals</span>
+              <span>Private groups</span>
+              <span>Evaluation lessons</span>
+            </div>
           </div>
-          <address>
-            Office: Fatima Plaza, Suite A1, Ground floor<br>
-            Wuye district, FCT Abuja
+          <address class="office-card">
+            <span class="office-icon" aria-hidden="true"></span>
+            <span>
+              <strong>Office: Fatima Plaza, Suite A1, Ground floor</strong>
+              <small>Wuye district, FCT Abuja</small>
+            </span>
           </address>
           <div class="contact-actions">
             <a class="whatsapp-button contact-whatsapp" href="https://wa.me/2347081362702" target="_blank" rel="noreferrer">
               <img src="assets/whatsapp-icon.svg" alt="">
               <span>WhatsApp Us</span>
             </a>
-            <a class="phone-link secondary-contact" href="tel:+2348030598899">Call administrative office</a>
+            <a class="phone-link secondary-contact" href="tel:+2348030598899">
+              <span class="phone-icon" aria-hidden="true"></span>
+              Call administrative office
+            </a>
           </div>
         </div>
         <form class="contact-form" name="enquiries" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field" data-contact-form>
