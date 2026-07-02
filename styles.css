@@ -554,6 +554,11 @@ h3 {
   border-color: rgba(251, 248, 239, 0.22);
 }
 
+.state-card-lagos {
+  background: linear-gradient(135deg, #ffffff, #e8ecf3);
+  border-color: #d8ddeb;
+}
+
 .state-card-fct {
   color: #fbf8ef;
   background: linear-gradient(135deg, var(--purple), var(--purple-dark));
