@@ -18,12 +18,48 @@ if (nav) {
   });
 }
 
-const paymentConfig = window.BRUVSCHESS_PAYMENTS;
+const loadPaymentStyles = () => {
+  if (document.querySelector('link[href$="payment.css"]')) return;
+
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "payment.css?v=payment-flow";
+  document.head.append(link);
+};
 
 const formatNaira = (amount) => `₦${Number(amount).toLocaleString("en-NG")}`;
 
+const getPaymentConfig = () => window.BRUVSCHESS_PAYMENTS;
+
+const ensureLegacyPaymentSection = (service) => {
+  document.querySelectorAll(".paystack-link").forEach((link) => {
+    link.href = service.paymentUrl;
+    link.textContent = "Pay after confirmation";
+
+    const copy = link.closest(".private-lessons-copy");
+    if (!copy || copy.querySelector("[data-payment-options]")) return;
+
+    const paymentCopy = document.createElement("div");
+    paymentCopy.className = "payment-copy";
+    paymentCopy.innerHTML = `
+      <strong>Current in-person coaching options</strong>
+      <p>After BruvsChess confirms the learner's needs, coaching format, location, and schedule, customers can complete payment securely through Paystack.</p>
+    `;
+
+    const options = document.createElement("div");
+    options.className = "payment-options";
+    options.dataset.paymentOptions = "privateCoaching";
+
+    link.replaceWith(paymentCopy, options);
+  });
+};
+
 const renderPaymentOptions = () => {
+  const paymentConfig = getPaymentConfig();
   if (!paymentConfig) return;
+
+  const privateCoaching = paymentConfig.services?.privateCoaching;
+  if (privateCoaching) ensureLegacyPaymentSection(privateCoaching);
 
   document.querySelectorAll("[data-payment-options]").forEach((container) => {
     const serviceKey = container.getAttribute("data-payment-options");
@@ -59,4 +95,20 @@ const renderPaymentOptions = () => {
   });
 };
 
-renderPaymentOptions();
+const loadPaymentConfig = () => {
+  if (getPaymentConfig()) {
+    loadPaymentStyles();
+    renderPaymentOptions();
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src = "payment-config.js?v=payment-flow";
+  script.onload = () => {
+    loadPaymentStyles();
+    renderPaymentOptions();
+  };
+  document.head.append(script);
+};
+
+loadPaymentConfig();
