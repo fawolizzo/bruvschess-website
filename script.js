@@ -2,9 +2,25 @@ const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".site-nav");
 
 const enhanceProgramMenus = () => {
+  const submenuMarkup = `
+    <div class="nav-subgroup">
+      <span>Private Coaching</span>
+      <a href="private-chess-lessons.html">In-Person Private Coaching</a>
+      <a href="online-chess-coaching.html">Online Chess Coaching</a>
+    </div>
+  `;
+
   document.querySelectorAll(".site-nav").forEach((siteNav) => {
     const existing = siteNav.querySelector(".has-submenu");
-    if (existing) return;
+    if (existing) {
+      const submenu = existing.querySelector(".nav-submenu");
+      const parent = existing.querySelector("a");
+
+      existing.classList.add("nav-item", "has-submenu");
+      parent?.classList.add("nav-parent");
+      if (submenu) submenu.innerHTML = submenuMarkup;
+      return;
+    }
 
     const programLink = Array.from(siteNav.querySelectorAll("a")).find((link) => link.textContent.trim() === "Programs");
     if (!programLink) return;
@@ -17,7 +33,7 @@ const enhanceProgramMenus = () => {
 
     const submenu = document.createElement("div");
     submenu.className = "nav-submenu";
-    submenu.innerHTML = '<a href="private-chess-lessons.html">Private Lessons</a>';
+    submenu.innerHTML = submenuMarkup;
 
     item.append(parent, submenu);
     programLink.replaceWith(item);
@@ -25,6 +41,27 @@ const enhanceProgramMenus = () => {
 };
 
 enhanceProgramMenus();
+
+const enhancePrivateCoachingCards = () => {
+  document.querySelectorAll(".program-card").forEach((card) => {
+    const heading = card.querySelector("h3");
+    if (!heading || heading.textContent.trim() !== "Private Coaching") return;
+    if (card.querySelector(".program-links")) return;
+
+    const oldLink = card.querySelector(".text-link");
+    oldLink?.remove();
+
+    const links = document.createElement("div");
+    links.className = "program-links";
+    links.innerHTML = `
+      <a class="text-link" href="private-chess-lessons.html">In-person coaching</a>
+      <a class="text-link" href="online-chess-coaching.html">Online coaching</a>
+    `;
+    card.append(links);
+  });
+};
+
+enhancePrivateCoachingCards();
 
 if (navToggle) {
   navToggle.addEventListener("click", () => {
@@ -56,7 +93,10 @@ const formatNaira = (amount) => `₦${Number(amount).toLocaleString("en-NG")}`;
 
 const getPaymentConfig = () => window.BRUVSCHESS_PAYMENTS;
 
-const isPrivateLessonsPage = () => window.location.pathname.endsWith("/private-chess-lessons.html");
+const isCoachingPaymentPage = () => (
+  window.location.pathname.endsWith("/private-chess-lessons.html") ||
+  window.location.pathname.endsWith("/online-chess-coaching.html")
+);
 
 const updatePrivateLessonLinks = () => {
   document.querySelectorAll('a[href="chess-lessons-abuja.html"]').forEach((link) => {
@@ -75,7 +115,7 @@ const updateLegacyPaymentLinks = () => {
 };
 
 const hideInlinePricingOutsidePrivatePage = () => {
-  if (isPrivateLessonsPage()) return;
+  if (isCoachingPaymentPage()) return;
 
   document.querySelectorAll("[data-payment-options]").forEach((container) => {
     const copy = container.closest(".private-lessons-copy");
@@ -99,7 +139,7 @@ const renderPaymentOptions = () => {
   updateLegacyPaymentLinks();
   hideInlinePricingOutsidePrivatePage();
 
-  if (!isPrivateLessonsPage()) return;
+  if (!isCoachingPaymentPage()) return;
 
   document.querySelectorAll("[data-payment-options]").forEach((container) => {
     const serviceKey = container.getAttribute("data-payment-options");
@@ -115,7 +155,8 @@ const renderPaymentOptions = () => {
       const card = document.createElement("article");
       card.className = "payment-option-card";
 
-      const perSessionText = perSession
+      const priceSuffixText = item.priceSuffix ? `<small>${item.priceSuffix}</small>` : "";
+      const perSessionText = perSession && !item.priceSuffix
         ? `<small>${formatNaira(perSession)} per session</small>`
         : "<small>Single coaching session</small>";
 
@@ -125,7 +166,7 @@ const renderPaymentOptions = () => {
           <h3>${item.name}</h3>
         </div>
         <strong>${formatNaira(item.price)}</strong>
-        ${perSessionText}
+        ${priceSuffixText || perSessionText}
         <p>${item.description}</p>
       `;
 
