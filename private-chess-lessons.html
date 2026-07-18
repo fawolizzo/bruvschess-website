@@ -10,8 +10,8 @@
     <link rel="canonical" href="https://bruvschess.org/private-chess-lessons.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="BruvsChess Educational Services">
-    <meta property="og:title" content="Private Chess Lessons | BruvsChess Educational Services">
-    <meta property="og:description" content="Private chess coaching options for learners across Nigeria. BruvsChess confirms the arrangement before payment.">
+    <meta property="og:title" content="In-Person Private Coaching | BruvsChess Educational Services">
+    <meta property="og:description" content="In-person private chess coaching options for learners across Nigeria. BruvsChess confirms the arrangement before payment.">
     <meta property="og:url" content="https://bruvschess.org/private-chess-lessons.html">
     <meta property="og:image" content="https://bruvschess.org/assets/bruvschess-logo-cropped.jpeg">
     <meta property="og:image:secure_url" content="https://bruvschess.org/assets/bruvschess-logo-cropped.jpeg">
@@ -19,10 +19,10 @@
     <meta property="og:image:height" content="520">
     <meta property="og:image:alt" content="BruvsChess Educational Services logo">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Private Chess Lessons | BruvsChess">
-    <meta name="twitter:description" content="Private chess coaching options for learners across Nigeria.">
+    <meta name="twitter:title" content="In-Person Private Coaching | BruvsChess">
+    <meta name="twitter:description" content="In-person private chess coaching options for learners across Nigeria.">
     <meta name="twitter:image" content="https://bruvschess.org/assets/bruvschess-logo-cropped.jpeg">
-    <title>Private Chess Lessons | BruvsChess Educational Services</title>
+    <title>In-Person Private Coaching | BruvsChess Educational Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -49,7 +49,16 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="about.html">About</a>
-        <a href="index.html#programs">Programs</a>
+        <div class="nav-item has-submenu">
+          <a class="nav-parent" href="index.html#programs">Programs</a>
+          <div class="nav-submenu">
+            <div class="nav-subgroup">
+              <span>Private Coaching</span>
+              <a href="private-chess-lessons.html" aria-current="page">In-Person Private Coaching</a>
+              <a href="online-chess-coaching.html">Online Chess Coaching</a>
+            </div>
+          </div>
+        </div>
         <a href="index.html#schools">Schools</a>
         <a href="team.html?v=team-page">Team</a>
         <a href="index.html#method">Method</a>
@@ -64,8 +73,8 @@
     <main>
       <section class="hero lesson-hero">
         <div class="hero-copy">
-          <p class="eyebrow">Private chess lessons</p>
-          <h1>Private chess coaching for learners across Nigeria.</h1>
+          <p class="eyebrow">In-person private coaching</p>
+          <h1>In-person private chess coaching for learners across Nigeria.</h1>
           <p class="lede">
             BruvsChess Educational Services arranges private coaching after we understand the
             learner's age, level, goals, location, and preferred schedule.
@@ -91,15 +100,15 @@
           <h2 id="private-flow-title">Confirm the coaching arrangement before payment.</h2>
         </div>
         <p>
-          Payment is not the first step. BruvsChess first confirms whether coaching will be online
-          or in person, the learner's needs, location, schedule, and the best package. Once that is
-          agreed, the customer can complete payment securely.
+          Payment is not the first step. BruvsChess first confirms the learner's needs, location,
+          schedule, and the best in-person coaching package. Once that is agreed, the customer can
+          complete payment securely.
         </p>
       </section>
 
       <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
         <div class="private-lessons-copy">
-          <p class="eyebrow">Coaching options</p>
+          <p class="eyebrow">In-person coaching options</p>
           <h2 id="coaching-options-title">Choose a package after your arrangement is confirmed.</h2>
           <p>
             These are the current in-person private coaching rates. One secure booking button is
@@ -185,7 +194,6 @@
             <select name="lesson_format" required>
               <option value="">Select one</option>
               <option>In-person private lesson</option>
-              <option>Online private lesson</option>
               <option>Small group lesson</option>
               <option>Evaluation lesson first</option>
             </select>
@@ -200,7 +208,7 @@
           </label>
           <label class="form-field form-field-wide">
             <span>Preferred days and time</span>
-            <input type="text" name="preferred_schedule" placeholder="Saturdays, weekdays after school, online evenings, etc." required>
+            <input type="text" name="preferred_schedule" placeholder="Saturdays, weekdays after school, school pickup window, etc." required>
           </label>
           <label class="form-field form-field-wide">
             <span>Learning goal</span>
