@@ -79,7 +79,16 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="about.html">About</a>
-        <a href="index.html#programs">Programs</a>
+        <div class="nav-item has-submenu">
+          <a class="nav-parent" href="index.html#programs">Programs</a>
+          <div class="nav-submenu">
+            <div class="nav-subgroup">
+              <span>Private Coaching</span>
+              <a href="private-chess-lessons.html">In-Person Private Coaching</a>
+              <a href="online-chess-coaching.html">Online Chess Coaching</a>
+            </div>
+          </div>
+        </div>
         <a href="index.html#schools">Schools</a>
         <a href="team.html?v=team-page">Team</a>
         <a href="index.html#method">Method</a>
@@ -156,14 +165,10 @@
           <p class="eyebrow">Book a lesson</p>
           <h2 id="lesson-enquiry-title">Tell us about the learner and preferred schedule.</h2>
           <p>
-            We confirm the lesson plan, availability, and fee before payment. After confirmation,
-            you can pay through Paystack.
+            We confirm the lesson plan, availability, and fee before payment. Private coaching
+            options are available on a dedicated page for families across Nigeria.
           </p>
-          <div class="payment-copy">
-            <strong>Current in-person coaching options</strong>
-            <p>Payment is made only after BruvsChess confirms the learner's needs, coaching format, location, and schedule.</p>
-          </div>
-          <div class="payment-options" data-payment-options="privateCoaching"></div>
+          <a class="button secondary paystack-link" href="private-chess-lessons.html">View private lesson options</a>
         </div>
         <form class="contact-form booking-form" name="private-lessons" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="private-lessons">
@@ -191,7 +196,6 @@
             <select name="lesson_format" required>
               <option value="">Select one</option>
               <option>In-person private lesson</option>
-              <option>Online private lesson</option>
               <option>Small group lesson</option>
               <option>Evaluation lesson first</option>
               <option>School chess club</option>
@@ -225,7 +229,6 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="payment-config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
