@@ -45,6 +45,20 @@
   white-space: nowrap;
 }
 
+.nav-subgroup {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.nav-subgroup span {
+  padding: 0.45rem 0.85rem 0.2rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .payment-copy {
   display: grid;
   gap: 0.35rem;
@@ -68,7 +82,7 @@
 
 .payment-options {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 0.8rem;
 }
 
@@ -131,6 +145,16 @@
 .payment-option-link {
   justify-self: start;
   margin-top: 0.2rem;
+}
+
+.program-card .program-links {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: auto;
+}
+
+.program-card .program-links .text-link {
+  margin-top: 0;
 }
 
 @media (max-width: 900px) {
