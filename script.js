@@ -31,26 +31,38 @@ const formatNaira = (amount) => `₦${Number(amount).toLocaleString("en-NG")}`;
 
 const getPaymentConfig = () => window.BRUVSCHESS_PAYMENTS;
 
-const ensureLegacyPaymentSection = (service) => {
+const isPrivateLessonsPage = () => window.location.pathname.endsWith("/private-chess-lessons.html");
+
+const updatePrivateLessonLinks = () => {
+  document.querySelectorAll('a[href="chess-lessons-abuja.html"]').forEach((link) => {
+    const text = link.textContent.toLowerCase();
+    if (text.includes("private")) link.href = "private-chess-lessons.html";
+  });
+};
+
+const updateLegacyPaymentLinks = () => {
   document.querySelectorAll(".paystack-link").forEach((link) => {
-    link.href = service.paymentUrl;
-    link.textContent = "Pay after confirmation";
+    link.href = "private-chess-lessons.html";
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+    link.textContent = "View private lesson options";
+  });
+};
 
-    const copy = link.closest(".private-lessons-copy");
-    if (!copy || copy.querySelector("[data-payment-options]")) return;
+const hideInlinePricingOutsidePrivatePage = () => {
+  if (isPrivateLessonsPage()) return;
 
-    const paymentCopy = document.createElement("div");
-    paymentCopy.className = "payment-copy";
-    paymentCopy.innerHTML = `
-      <strong>Current in-person coaching options</strong>
-      <p>After BruvsChess confirms the learner's needs, coaching format, location, and schedule, customers can complete payment securely through Paystack.</p>
-    `;
+  document.querySelectorAll("[data-payment-options]").forEach((container) => {
+    const copy = container.closest(".private-lessons-copy");
+    const paymentCopy = copy?.querySelector(".payment-copy");
+    const link = document.createElement("a");
 
-    const options = document.createElement("div");
-    options.className = "payment-options";
-    options.dataset.paymentOptions = "privateCoaching";
+    link.className = "button secondary";
+    link.href = "private-chess-lessons.html";
+    link.textContent = "View private lesson options";
 
-    link.replaceWith(paymentCopy, options);
+    if (paymentCopy) paymentCopy.remove();
+    container.replaceWith(link);
   });
 };
 
@@ -58,8 +70,11 @@ const renderPaymentOptions = () => {
   const paymentConfig = getPaymentConfig();
   if (!paymentConfig) return;
 
-  const privateCoaching = paymentConfig.services?.privateCoaching;
-  if (privateCoaching) ensureLegacyPaymentSection(privateCoaching);
+  updatePrivateLessonLinks();
+  updateLegacyPaymentLinks();
+  hideInlinePricingOutsidePrivatePage();
+
+  if (!isPrivateLessonsPage()) return;
 
   document.querySelectorAll("[data-payment-options]").forEach((container) => {
     const serviceKey = container.getAttribute("data-payment-options");
@@ -112,3 +127,6 @@ const loadPaymentConfig = () => {
 };
 
 loadPaymentConfig();
+updatePrivateLessonLinks();
+updateLegacyPaymentLinks();
+hideInlinePricingOutsidePrivatePage();
