@@ -1,6 +1,31 @@
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".site-nav");
 
+const enhanceProgramMenus = () => {
+  document.querySelectorAll(".site-nav").forEach((siteNav) => {
+    const existing = siteNav.querySelector(".has-submenu");
+    if (existing) return;
+
+    const programLink = Array.from(siteNav.querySelectorAll("a")).find((link) => link.textContent.trim() === "Programs");
+    if (!programLink) return;
+
+    const item = document.createElement("div");
+    item.className = "nav-item has-submenu";
+
+    const parent = programLink.cloneNode(true);
+    parent.classList.add("nav-parent");
+
+    const submenu = document.createElement("div");
+    submenu.className = "nav-submenu";
+    submenu.innerHTML = '<a href="private-chess-lessons.html">Private Lessons</a>';
+
+    item.append(parent, submenu);
+    programLink.replaceWith(item);
+  });
+};
+
+enhanceProgramMenus();
+
 if (navToggle) {
   navToggle.addEventListener("click", () => {
     const isOpen = navToggle.getAttribute("aria-expanded") === "true";
@@ -102,11 +127,18 @@ const renderPaymentOptions = () => {
         <strong>${formatNaira(item.price)}</strong>
         ${perSessionText}
         <p>${item.description}</p>
-        <a class="button secondary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Pay after confirmation</a>
       `;
 
       container.append(card);
     });
+
+    const cta = document.createElement("div");
+    cta.className = "payment-shared-cta";
+    cta.innerHTML = `
+      <p>All packages use one Paystack coaching page. Select your preferred package after opening Paystack.</p>
+      <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Select package on Paystack</a>
+    `;
+    container.after(cta);
   });
 };
 
