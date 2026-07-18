@@ -135,8 +135,8 @@ const renderPaymentOptions = () => {
     const cta = document.createElement("div");
     cta.className = "payment-shared-cta";
     cta.innerHTML = `
-      <p>All packages use one Paystack coaching page. Select your preferred package after opening Paystack.</p>
-      <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Select package on Paystack</a>
+      <p>All packages use one secure booking page. Select your preferred package after clicking the button.</p>
+      <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Continue to booking</a>
     `;
     container.after(cta);
   });
