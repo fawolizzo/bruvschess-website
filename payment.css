@@ -16,12 +16,12 @@
 
 .nav-submenu {
   position: absolute;
-  top: calc(100% + 0.45rem);
+  top: 100%;
   left: 50%;
   z-index: 20;
   display: grid;
   min-width: 190px;
-  padding: 0.45rem;
+  padding: 0.65rem 0.45rem 0.45rem;
   background: rgba(251, 248, 239, 0.98);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -30,6 +30,15 @@
   pointer-events: none;
   transform: translate(-50%, -0.25rem);
   transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.nav-submenu::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 0.75rem;
 }
 
 .has-submenu:hover .nav-submenu,
