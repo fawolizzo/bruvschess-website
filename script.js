@@ -95,7 +95,10 @@ const getPaymentConfig = () => window.BRUVSCHESS_PAYMENTS;
 
 const isCoachingPaymentPage = () => (
   window.location.pathname.endsWith("/private-chess-lessons.html") ||
-  window.location.pathname.endsWith("/online-chess-coaching.html")
+  window.location.pathname.endsWith("/online-chess-coaching.html") ||
+  window.location.pathname.endsWith("/chess-lessons-with-im-bunmi-olape.html") ||
+  window.location.pathname.endsWith("/im-bunmi-olape") ||
+  window.location.pathname.endsWith("/im-bunmi-olape/")
 );
 
 const updatePrivateLessonLinks = () => {

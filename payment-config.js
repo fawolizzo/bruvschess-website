@@ -61,6 +61,33 @@ window.BRUVSCHESS_PAYMENTS = {
           description: "A shared online coaching session for family members learning together."
         }
       ]
+    },
+    imBunmiInPerson: {
+      serviceName: "In-Person Lessons with IM Bunmi Olape",
+      paymentUrl: "https://paystack.shop/pay/bruvschess-coaching",
+      packages: [
+        {
+          name: "Single Lesson with IM Bunmi Olape",
+          label: "Single lesson",
+          sessions: 1,
+          price: 40000,
+          description: "A focused in-person coaching session with International Master Bunmi Olape."
+        },
+        {
+          name: "5-Session Package with IM Bunmi Olape",
+          label: "5 sessions",
+          sessions: 5,
+          price: 180000,
+          description: "Five in-person sessions with IM Bunmi Olape for steady improvement and guided practice."
+        },
+        {
+          name: "10-Session Package with IM Bunmi Olape",
+          label: "10 sessions",
+          sessions: 10,
+          price: 330000,
+          description: "Ten in-person sessions with IM Bunmi Olape for deeper preparation and longer-term development."
+        }
+      ]
     }
   }
 };

@@ -108,6 +108,7 @@
               <span>Private Coaching</span>
               <a href="private-chess-lessons.html">In-Person Private Coaching</a>
               <a href="online-chess-coaching.html">Online Chess Coaching</a>
+              <a href="chess-lessons-with-im-bunmi-olape.html">Lessons with IM Bunmi Olape</a>
             </div>
           </div>
         </div>
@@ -337,8 +338,9 @@
           <a class="button secondary paystack-link" href="private-chess-lessons.html">View private lesson options</a>
         </div>
 
-        <form class="contact-form booking-form" name="private-lessons" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="contact-form booking-form" name="private-lessons" action="/thank-you/" method="post" netlify data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="private-lessons">
+          <input type="hidden" name="subject" data-remove-prefix value="New BruvsChess private lesson enquiry (%{submissionId})">
           <p class="hidden-field">
             <label>Do not fill this out if you are human <input name="bot-field"></label>
           </p>
@@ -482,8 +484,9 @@
             </a>
           </div>
         </div>
-        <form class="contact-form" name="enquiries" action="/thank-you.html" method="post" data-netlify="true" netlify-honeypot="bot-field" data-contact-form>
+        <form class="contact-form" name="enquiries" action="/thank-you/" method="post" netlify data-netlify="true" netlify-honeypot="bot-field" data-contact-form>
           <input type="hidden" name="form-name" value="enquiries">
+          <input type="hidden" name="subject" data-remove-prefix value="New BruvsChess website enquiry (%{submissionId})">
           <p class="hidden-field">
             <label>Do not fill this out if you are human <input name="bot-field"></label>
           </p>
