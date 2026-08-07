@@ -7,6 +7,7 @@ const enhanceProgramMenus = () => {
       <span>Private Coaching</span>
       <a href="private-chess-lessons.html">In-Person Private Coaching</a>
       <a href="online-chess-coaching.html">Online Chess Coaching</a>
+      <a href="chess-lessons-with-im-bunmi-olape.html">Lessons with IM Bunmi Olape</a>
     </div>
   `;
 
@@ -46,18 +47,26 @@ const enhancePrivateCoachingCards = () => {
   document.querySelectorAll(".program-card").forEach((card) => {
     const heading = card.querySelector("h3");
     if (!heading || heading.textContent.trim() !== "Private Coaching") return;
-    if (card.querySelector(".program-links")) return;
 
-    const oldLink = card.querySelector(".text-link");
-    oldLink?.remove();
+    let links = card.querySelector(".program-links");
+    if (!links) {
+      card.querySelector(".text-link")?.remove();
+      links = document.createElement("div");
+      links.className = "program-links";
+      links.innerHTML = `
+        <a class="text-link" href="private-chess-lessons.html">In-person coaching</a>
+        <a class="text-link" href="online-chess-coaching.html">Online coaching</a>
+      `;
+      card.append(links);
+    }
 
-    const links = document.createElement("div");
-    links.className = "program-links";
-    links.innerHTML = `
-      <a class="text-link" href="private-chess-lessons.html">In-person coaching</a>
-      <a class="text-link" href="online-chess-coaching.html">Online coaching</a>
-    `;
-    card.append(links);
+    if (!links.querySelector('a[href="chess-lessons-with-im-bunmi-olape.html"]')) {
+      const bunmiLink = document.createElement("a");
+      bunmiLink.className = "text-link";
+      bunmiLink.href = "chess-lessons-with-im-bunmi-olape.html";
+      bunmiLink.textContent = "Lessons with IM Bunmi Olape";
+      links.append(bunmiLink);
+    }
   });
 };
 
