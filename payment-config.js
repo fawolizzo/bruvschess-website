@@ -1,4 +1,9 @@
 window.BRUVSCHESS_PAYMENTS = {
+  bankTransfer: {
+    accountName: "Bruvschess Educational Services",
+    accountNumber: "7081362702",
+    bankName: "Moniepoint MFB"
+  },
   services: {
     privateCoaching: {
       serviceName: "In-Person Private Coaching",
