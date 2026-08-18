@@ -94,7 +94,7 @@ const loadPaymentStyles = () => {
 
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "payment.css?v=payment-flow";
+  link.href = "payment.css?v=bank-transfer";
   document.head.append(link);
 };
 
@@ -143,6 +143,25 @@ const hideInlinePricingOutsidePrivatePage = () => {
   });
 };
 
+const renderBankTransferSummaries = () => {
+  const bankTransfer = getPaymentConfig()?.bankTransfer;
+  if (!bankTransfer) return;
+
+  document.querySelectorAll("[data-bank-transfer-summary]").forEach((summary) => {
+    summary.innerHTML = `
+      <div>
+        <span>Lesson payment options</span>
+        <strong>Paystack or bank transfer</strong>
+      </div>
+      <div>
+        <p><b>${bankTransfer.bankName}</b> · ${bankTransfer.accountNumber}</p>
+        <small>${bankTransfer.accountName}</small>
+      </div>
+      <small class="program-payment-reminder">Pay only after your lesson arrangement is confirmed.</small>
+    `;
+  });
+};
+
 const renderPaymentOptions = () => {
   const paymentConfig = getPaymentConfig();
   if (!paymentConfig) return;
@@ -150,14 +169,16 @@ const renderPaymentOptions = () => {
   updatePrivateLessonLinks();
   updateLegacyPaymentLinks();
   hideInlinePricingOutsidePrivatePage();
+  renderBankTransferSummaries();
 
   if (!isCoachingPaymentPage()) return;
 
   document.querySelectorAll("[data-payment-options]").forEach((container) => {
     const serviceKey = container.getAttribute("data-payment-options");
     const service = paymentConfig.services?.[serviceKey];
+    const bankTransfer = paymentConfig.bankTransfer;
 
-    if (!service) return;
+    if (!service || !bankTransfer) return;
 
     container.innerHTML = "";
     container.setAttribute("aria-label", `${service.serviceName} payment options`);
@@ -186,14 +207,48 @@ const renderPaymentOptions = () => {
     });
 
     const cta = document.createElement("div");
-    cta.className = "payment-shared-cta";
+    cta.className = "payment-methods";
     cta.innerHTML = `
-      <p>All packages use one secure booking page. Select your preferred package after clicking the button.</p>
-      <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Continue to booking</a>
+      <section class="payment-method-card payment-method-online" aria-labelledby="${serviceKey}-paystack-title">
+        <span class="payment-method-label">Pay online</span>
+        <h3 id="${serviceKey}-paystack-title">Pay securely with Paystack</h3>
+        <p>Select your confirmed package on our secure Paystack checkout page.</p>
+        <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Continue to Paystack</a>
+      </section>
+      <section class="payment-method-card payment-method-transfer" aria-labelledby="${serviceKey}-transfer-title">
+        <span class="payment-method-label">Bank transfer</span>
+        <h3 id="${serviceKey}-transfer-title">Transfer to our Moniepoint account</h3>
+        <dl class="bank-details">
+          <div><dt>Account name</dt><dd>${bankTransfer.accountName}</dd></div>
+          <div><dt>Account number</dt><dd><strong>${bankTransfer.accountNumber}</strong></dd></div>
+          <div><dt>Bank</dt><dd>${bankTransfer.bankName}</dd></div>
+        </dl>
+        <button class="button secondary copy-account-number" type="button" data-account-number="${bankTransfer.accountNumber}">Copy account number</button>
+        <p class="transfer-note">Pay only after your lesson arrangement is confirmed. Use the learner's full name as the transfer narration, then send proof of payment to <a href="mailto:info@bruvschess.org">info@bruvschess.org</a>.</p>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </section>
     `;
     container.after(cta);
   });
 };
+
+document.addEventListener("click", async (event) => {
+  if (!(event.target instanceof Element)) return;
+
+  const button = event.target.closest(".copy-account-number");
+  if (!button) return;
+
+  const accountNumber = button.dataset.accountNumber;
+  const status = button.parentElement?.querySelector(".copy-status");
+
+  try {
+    await navigator.clipboard.writeText(accountNumber);
+    button.textContent = "Account number copied";
+    if (status) status.textContent = "The Moniepoint account number has been copied.";
+  } catch {
+    if (status) status.textContent = `Copy this account number: ${accountNumber}`;
+  }
+});
 
 const loadPaymentConfig = () => {
   if (getPaymentConfig()) {
@@ -203,7 +258,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=payment-flow";
+  script.src = "payment-config.js?v=bank-transfer";
   script.onload = () => {
     loadPaymentStyles();
     renderPaymentOptions();
