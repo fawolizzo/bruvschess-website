@@ -4,6 +4,46 @@ window.BRUVSCHESS_COACHING = {
     accountNumber: "7081362702",
     bankName: "Moniepoint MFB"
   },
+  programs: {
+    onlineLessons: {
+      name: "Online chess lessons",
+      title: "Book an online lesson",
+      description: "Online lessons are delivered by available BruvsChess instructors. We match each learner with a suitable instructor after reviewing their level, goals, and preferred schedule.",
+      contactUrl: "#lesson-enquiry",
+      contactLabel: "Book an online lesson",
+      packages: [
+        {
+          name: "Single Online Lesson",
+          label: "Single lesson",
+          sessions: 1,
+          price: 30000,
+          description: "A focused online coaching session with an available BruvsChess instructor."
+        },
+        {
+          name: "5-Lesson Online Package",
+          label: "5 lessons",
+          sessions: 5,
+          price: 135000,
+          description: "Five online sessions with a BruvsChess instructor for consistent practice and guided progress."
+        },
+        {
+          name: "10-Lesson Online Package",
+          label: "10 lessons",
+          sessions: 10,
+          price: 240000,
+          description: "Ten online sessions for review, structured practice, and steady improvement."
+        },
+        {
+          name: "Family Group Lesson",
+          label: "Family group",
+          sessions: 1,
+          price: 40000,
+          priceSuffix: "per 1-hour session",
+          description: "A shared online session for family members learning together with a BruvsChess instructor."
+        }
+      ]
+    }
+  },
   coaches: [
     {
       id: "im-bunmi-olape",
@@ -18,61 +58,27 @@ window.BRUVSCHESS_COACHING = {
         inPerson: {
           name: "In-person coaching",
           packages: [
-        {
-          name: "Single In-Person Lesson",
-          label: "Single lesson",
-          sessions: 1,
-          price: 40000,
-          description: "A focused one-on-one session with IM Bunmi Olape after the learner's needs, location, and schedule are confirmed."
-        },
-        {
-          name: "5-Lesson In-Person Package",
-          label: "5 lessons",
-          sessions: 5,
-          price: 180000,
-          description: "Five scheduled sessions with IM Bunmi Olape for steady improvement and guided practice."
-        },
-        {
-          name: "10-Lesson In-Person Package",
-          label: "10 lessons",
-          sessions: 10,
-          price: 330000,
-          description: "Ten sessions with IM Bunmi Olape for deeper preparation and longer-term development."
-        }
-          ]
-        },
-        online: {
-          name: "Online coaching",
-          packages: [
-        {
-          name: "Single Online Lesson",
-          label: "Single lesson",
-          sessions: 1,
-          price: 30000,
-          description: "A focused online session with IM Bunmi Olape for flexible chess instruction from home."
-        },
-        {
-          name: "5-Lesson Online Package",
-          label: "5 lessons",
-          sessions: 5,
-          price: 135000,
-          description: "Five online sessions with IM Bunmi Olape for consistent practice and guided progress."
-        },
-        {
-          name: "10-Lesson Online Package",
-          label: "10 lessons",
-          sessions: 10,
-          price: 240000,
-          description: "Ten online sessions with IM Bunmi Olape for review, practice, and steady improvement."
-        },
-        {
-          name: "Family Group Lesson",
-          label: "Family group",
-          sessions: 1,
-          price: 40000,
-          priceSuffix: "per 1-hour session",
-          description: "A shared online session with IM Bunmi Olape for family members learning together."
-        }
+            {
+              name: "Single In-Person Lesson",
+              label: "Single lesson",
+              sessions: 1,
+              price: 40000,
+              description: "A focused one-on-one session with IM Bunmi Olape after the learner's needs, location, and schedule are confirmed."
+            },
+            {
+              name: "5-Lesson In-Person Package",
+              label: "5 lessons",
+              sessions: 5,
+              price: 180000,
+              description: "Five scheduled sessions with IM Bunmi Olape for steady improvement and guided practice."
+            },
+            {
+              name: "10-Lesson In-Person Package",
+              label: "10 lessons",
+              sessions: 10,
+              price: 330000,
+              description: "Ten sessions with IM Bunmi Olape for deeper preparation and longer-term development."
+            }
           ]
         }
       }

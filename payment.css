@@ -238,7 +238,8 @@
   margin-top: 0.2rem;
 }
 
-.coach-profiles {
+.coach-profiles,
+.coaching-programs {
   display: grid;
   gap: 1.25rem;
 }
@@ -295,6 +296,29 @@
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.online-program-header {
+  padding: 1.4rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), #332a66);
+}
+
+.online-program-header h3,
+.online-program-header p {
+  margin: 0;
+}
+
+.online-program-header h3 {
+  margin: 0.25rem 0 0.45rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+}
+
+.online-program-header p {
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
 }
 
 .coach-offering {

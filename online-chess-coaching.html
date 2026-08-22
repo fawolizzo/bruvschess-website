@@ -30,7 +30,7 @@
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css?v=bank-transfer">
-    <link rel="stylesheet" href="payment.css?v=coach-profiles">
+    <link rel="stylesheet" href="payment.css?v=online-instructors">
   </head>
   <body>
     <header class="site-header" id="top">
@@ -109,22 +109,22 @@
 
       <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
         <div class="private-lessons-copy">
-          <p class="eyebrow">Meet the coach</p>
-          <h2 id="coaching-options-title">Choose an online package offered by IM Bunmi Olape.</h2>
+          <p class="eyebrow">Online lesson options</p>
+          <h2 id="coaching-options-title">Book an online lesson with a BruvsChess instructor.</h2>
           <p>
-            The prices shown here belong specifically to International Master Bunmi Olape. Future
-            online coaches can have completely different packages and prices.
+            BruvsChess assigns a suitable available instructor after reviewing the learner's level,
+            goals, preferred schedule, and lesson needs.
           </p>
           <div class="booking-steps" aria-label="Online coaching booking steps">
             <div>
               <span>01</span>
-              <strong>Choose your coach</strong>
-              <p>Review the coach's profile, online packages, and prices.</p>
+              <strong>Tell us your needs</strong>
+              <p>Share the learner's level, goals, preferred schedule, and online setup.</p>
             </div>
             <div>
               <span>02</span>
-              <strong>Book or contact</strong>
-              <p>Tell us the learner's level, goals, preferred schedule, and online setup.</p>
+              <strong>Get matched</strong>
+              <p>We assign a suitable BruvsChess instructor and confirm availability.</p>
             </div>
             <div>
               <span>03</span>
@@ -135,7 +135,7 @@
         </div>
 
         <div>
-          <div class="coach-profiles" data-coach-profiles="online" data-contact-url="#lesson-enquiry"></div>
+          <div class="coaching-programs" data-coaching-program="onlineLessons"></div>
         </div>
       </section>
 
@@ -160,7 +160,6 @@
         <form class="contact-form booking-form" name="online-coaching" action="/thank-you/" method="post" netlify data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="online-coaching">
           <input type="hidden" name="subject" data-remove-prefix value="New BruvsChess online coaching enquiry (%{submissionId})">
-          <input type="hidden" name="coach" value="IM Bunmi Olape">
           <p class="hidden-field">
             <label>Do not fill this out if you are human <input name="bot-field"></label>
           </p>
@@ -234,7 +233,7 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="payment-config.js?v=coach-profiles"></script>
-    <script src="script.js?v=coach-profiles"></script>
+    <script src="payment-config.js?v=online-instructors"></script>
+    <script src="script.js?v=online-instructors"></script>
   </body>
 </html>

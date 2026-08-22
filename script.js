@@ -213,6 +213,71 @@ const renderCoachProfiles = () => {
   });
 };
 
+const renderCoachingPrograms = () => {
+  const coachingConfig = getCoachingConfig();
+  if (!coachingConfig) return;
+
+  document.querySelectorAll("[data-coaching-program]").forEach((container) => {
+    const programKey = container.dataset.coachingProgram;
+    const program = coachingConfig.programs?.[programKey];
+    const bankTransfer = coachingConfig.bankTransfer;
+
+    if (!program || !bankTransfer) return;
+
+    const packages = program.packages.map((item) => {
+      const perSession = item.sessions > 1 ? Math.round(item.price / item.sessions) : null;
+      const priceDetail = item.priceSuffix || (perSession
+        ? `${formatNaira(perSession)} per lesson`
+        : "Single coaching lesson");
+
+      return `
+        <article class="coach-package-card">
+          <div>
+            <span>${item.label}</span>
+            <h4>${item.name}</h4>
+          </div>
+          <strong>${formatNaira(item.price)}</strong>
+          <small>${priceDetail}</small>
+          <p>${item.description}</p>
+        </article>
+      `;
+    }).join("");
+
+    container.innerHTML = `
+      <article class="coach-profile online-program-profile" aria-labelledby="${programKey}-title">
+        <header class="online-program-header">
+          <span class="coach-title">${program.name}</span>
+          <h3 id="${programKey}-title">${program.title}</h3>
+          <p>${program.description}</p>
+        </header>
+        <section class="coach-offering" aria-label="${program.name} packages">
+          <div class="coach-offering-heading">
+            <span>Flexible online coaching</span>
+            <h4>Choose an online lesson package</h4>
+            <p>Your instructor is assigned according to the learner's needs and availability.</p>
+          </div>
+          <div class="coach-package-grid">${packages}</div>
+        </section>
+        <footer class="coach-profile-footer">
+          <section class="coach-bank-transfer" aria-labelledby="${programKey}-transfer-title">
+            <span class="payment-method-label">Bank transfer</span>
+            <h4 id="${programKey}-transfer-title">Pay after your booking is confirmed</h4>
+            <dl class="bank-details">
+              <div><dt>Account name</dt><dd>${bankTransfer.accountName}</dd></div>
+              <div><dt>Account number</dt><dd><strong>${bankTransfer.accountNumber}</strong></dd></div>
+              <div><dt>Bank</dt><dd>${bankTransfer.bankName}</dd></div>
+            </dl>
+            <button class="button secondary copy-account-number" type="button" data-account-number="${bankTransfer.accountNumber}">Copy account number</button>
+            <p class="transfer-note">Use the learner's full name as the transfer narration, then send proof of payment to <a href="mailto:info@bruvschess.org">info@bruvschess.org</a>.</p>
+            <p class="copy-status" role="status" aria-live="polite"></p>
+          </section>
+          <a class="button primary coach-contact-button" href="${program.contactUrl}">${program.contactLabel}</a>
+        </footer>
+      </article>
+    `;
+  });
+};
+
 document.addEventListener("click", async (event) => {
   if (!(event.target instanceof Element)) return;
 
@@ -235,6 +300,7 @@ const loadPaymentConfig = () => {
   if (getCoachingConfig()) {
     loadPaymentStyles();
     renderCoachProfiles();
+    renderCoachingPrograms();
     return;
   }
 
@@ -243,6 +309,7 @@ const loadPaymentConfig = () => {
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();
+    renderCoachingPrograms();
   };
   document.head.append(script);
 };
