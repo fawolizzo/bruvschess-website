@@ -30,7 +30,7 @@
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css?v=bank-transfer">
-    <link rel="stylesheet" href="payment.css?v=coach-profiles">
+    <link rel="stylesheet" href="payment.css?v=coaches-page">
   </head>
   <body>
     <header class="site-header" id="top">
@@ -110,10 +110,10 @@
       <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
         <div class="private-lessons-copy">
           <p class="eyebrow">Meet the coach</p>
-          <h2 id="coaching-options-title">Choose a package offered by IM Bunmi Olape.</h2>
+          <h2 id="coaching-options-title">Choose your coach and in-person lesson package.</h2>
           <p>
-            The prices shown here belong specifically to International Master Bunmi Olape. Future
-            coaches will have their own profiles, packages, and prices.
+            Each BruvsChess coach has an individual profile, experience, packages, and prices.
+            Compare the options below and contact us to confirm the best fit.
           </p>
           <div class="booking-steps" aria-label="Private lesson booking steps">
             <div>
@@ -135,7 +135,7 @@
         </div>
 
         <div>
-          <div class="coach-profiles" data-coach-profiles="inPerson" data-contact-url="#lesson-enquiry"></div>
+          <div class="coach-profiles" data-coach-profiles="inPerson"></div>
         </div>
       </section>
 
@@ -160,7 +160,6 @@
         <form class="contact-form booking-form" name="private-lessons" action="/thank-you/" method="post" netlify data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="private-lessons">
           <input type="hidden" name="subject" data-remove-prefix value="New BruvsChess private lesson enquiry (%{submissionId})">
-          <input type="hidden" name="coach" value="IM Bunmi Olape">
           <p class="hidden-field">
             <label>Do not fill this out if you are human <input name="bot-field"></label>
           </p>
@@ -202,6 +201,13 @@
             </select>
           </label>
           <label class="form-field">
+            <span>Preferred coach</span>
+            <select name="coach" data-coach-select required>
+              <option value="">Select a coach</option>
+              <option value="not-sure">Not sure — help me choose</option>
+            </select>
+          </label>
+          <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
           </label>
@@ -233,7 +239,7 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="payment-config.js?v=coach-profiles"></script>
-    <script src="script.js?v=coach-profiles"></script>
+    <script src="payment-config.js?v=coaches-page"></script>
+    <script src="script.js?v=coaches-page"></script>
   </body>
 </html>

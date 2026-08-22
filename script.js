@@ -5,6 +5,7 @@ const enhanceProgramMenus = () => {
   const submenuMarkup = `
     <div class="nav-subgroup">
       <span>Private Coaching</span>
+      <a href="coaches.html">Meet Our Coaches</a>
       <a href="private-chess-lessons.html">In-Person Private Coaching</a>
       <a href="online-chess-coaching.html">Online Chess Coaching</a>
       <a href="chess-lessons-with-im-bunmi-olape.html">Lessons with IM Bunmi Olape</a>
@@ -94,7 +95,7 @@ const loadPaymentStyles = () => {
 
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "payment.css?v=coach-profiles";
+  link.href = "payment.css?v=coaches-page";
   document.head.append(link);
 };
 
@@ -128,12 +129,36 @@ const renderBankTransferSummaries = () => {
   });
 };
 
+const populateCoachSelects = () => {
+  const coachingConfig = getCoachingConfig();
+  if (!coachingConfig) return;
+
+  const requestedCoachId = new URLSearchParams(window.location.search).get("coach");
+
+  document.querySelectorAll("[data-coach-select]").forEach((select) => {
+    select.querySelectorAll("[data-coach-option]").forEach((option) => option.remove());
+
+    coachingConfig.coaches
+      .filter((coach) => coach.offerings?.inPerson)
+      .forEach((coach) => {
+        const option = document.createElement("option");
+        option.value = coach.name;
+        option.textContent = `${coach.name} — ${coach.title}`;
+        option.dataset.coachOption = coach.id;
+        select.append(option);
+
+        if (coach.id === requestedCoachId) select.value = coach.name;
+      });
+  });
+};
+
 const renderCoachProfiles = () => {
   const coachingConfig = getCoachingConfig();
   if (!coachingConfig) return;
 
   updatePrivateLessonLinks();
   renderBankTransferSummaries();
+  populateCoachSelects();
 
   document.querySelectorAll("[data-coach-profiles]").forEach((container) => {
     const offeringKey = container.dataset.coachProfiles;
@@ -305,7 +330,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=coach-profiles";
+  script.src = "payment-config.js?v=coaches-page";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();

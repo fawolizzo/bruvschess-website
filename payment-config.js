@@ -82,6 +82,44 @@ window.BRUVSCHESS_COACHING = {
           ]
         }
       }
+    },
+    {
+      id: "adegbayi-oluwadara",
+      name: "Adegbayi Oluwadara",
+      fullName: "Adegbayi Oluwadara",
+      title: "Chess Instructor · FIDE-Certified Chess Education Lecturer",
+      photo: "assets/adegbayi-oluwadara.jpg",
+      bio: "Adegbayi Oluwadara is a FIDE-certified Chess Education Lecturer with more than 16 years of experience teaching children and adults. He coached Ondo State to a chess silver medal at the 2011 National Sports Festival, has placed at major national and West African competitions, and has taught with BruvsChess since 2016. He is the current President of the Chess Players' Association of Nigeria (CPAN).",
+      contactUrl: "private-chess-lessons.html?coach=adegbayi-oluwadara#lesson-enquiry",
+      contactLabel: "Book / Contact Adegbayi",
+      offerings: {
+        inPerson: {
+          name: "In-person coaching",
+          packages: [
+            {
+              name: "Single In-Person Lesson",
+              label: "Single lesson",
+              sessions: 1,
+              price: 30000,
+              description: "A focused one-on-one session with Adegbayi Oluwadara after the learner's needs, location, and schedule are confirmed."
+            },
+            {
+              name: "5-Lesson In-Person Package",
+              label: "5 lessons",
+              sessions: 5,
+              price: 135000,
+              description: "Five scheduled sessions with Adegbayi Oluwadara for guided practice and steady improvement."
+            },
+            {
+              name: "10-Lesson In-Person Package",
+              label: "10 lessons",
+              sessions: 10,
+              price: 247500,
+              description: "Ten sessions with Adegbayi Oluwadara for structured training and longer-term development."
+            }
+          ]
+        }
+      }
     }
   ]
 };
