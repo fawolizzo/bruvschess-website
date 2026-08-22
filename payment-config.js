@@ -49,9 +49,16 @@ window.BRUVSCHESS_COACHING = {
       id: "im-bunmi-olape",
       name: "IM Bunmi Olape",
       fullName: "International Master Bunmi Olape",
-      title: "International Master",
+      title: "International Master · FIDE-Certified Instructor/Trainer",
       photo: "assets/im-bunmi-olape.jpg",
-      bio: "International Master Bunmi Olape provides focused coaching through BruvsChess Educational Services, helping learners strengthen calculation, decision-making, and structured practice.",
+      bio: "International Master Bunmi Olape is a former Nigerian National Chess Champion and experienced coach who has represented Nigeria at major international events, including Chess Olympiads. He provides personalized, structured in-person training for beginners, school students, adult learners, and experienced players.",
+      highlights: [
+        "Former Nigerian National Chess Champion",
+        "African Games gold medalist — 2003 and 2011",
+        "Nigeria coach at the 2006 World University Chess Championship",
+        "Former coach of the Oyo State chess team",
+        "Peak FIDE rating: 2306"
+      ],
       contactUrl: "chess-lessons-with-im-bunmi-olape.html#lesson-enquiry",
       contactLabel: "Book / Contact IM Bunmi",
       offerings: {
@@ -90,6 +97,12 @@ window.BRUVSCHESS_COACHING = {
       title: "Chess Instructor · FIDE-Certified Chess Education Lecturer",
       photo: "assets/adegbayi-oluwadara.jpg",
       bio: "Adegbayi Oluwadara is a FIDE-certified Chess Education Lecturer with more than 16 years of experience teaching children and adults. He coached Ondo State to a chess silver medal at the 2011 National Sports Festival, has placed at major national and West African competitions, and has taught with BruvsChess since 2016. He is the current President of the Chess Players' Association of Nigeria (CPAN).",
+      highlights: [
+        "16+ years of chess instruction",
+        "FIDE-Certified Chess Education Lecturer",
+        "National Sports Festival silver-medal coach",
+        "Current CPAN President"
+      ],
       contactUrl: "private-chess-lessons.html?coach=adegbayi-oluwadara#lesson-enquiry",
       contactLabel: "Book / Contact Adegbayi",
       offerings: {

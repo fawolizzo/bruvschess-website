@@ -5,7 +5,6 @@ const enhanceProgramMenus = () => {
   const submenuMarkup = `
     <div class="nav-subgroup">
       <span>Private Coaching</span>
-      <a href="coaches.html">Meet Our Coaches</a>
       <a href="private-chess-lessons.html">In-Person Private Coaching</a>
       <a href="online-chess-coaching.html">Online Chess Coaching</a>
       <a href="chess-lessons-with-im-bunmi-olape.html">Lessons with IM Bunmi Olape</a>
@@ -13,6 +12,18 @@ const enhanceProgramMenus = () => {
   `;
 
   document.querySelectorAll(".site-nav").forEach((siteNav) => {
+    if (!siteNav.querySelector('a[href="coaches.html"]')) {
+      const coachesLink = document.createElement("a");
+      const teamLink = siteNav.querySelector('a[href^="team.html"]');
+
+      coachesLink.href = "coaches.html";
+      coachesLink.textContent = "Coaches";
+
+      if (document.body.matches(".coaches-page")) coachesLink.setAttribute("aria-current", "page");
+      if (teamLink) teamLink.before(coachesLink);
+      else siteNav.append(coachesLink);
+    }
+
     const existing = siteNav.querySelector(".has-submenu");
     if (existing) {
       const submenu = existing.querySelector(".nav-submenu");
@@ -95,7 +106,7 @@ const loadPaymentStyles = () => {
 
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "payment.css?v=coaches-page";
+  link.href = "payment.css?v=coach-menu";
   document.head.append(link);
 };
 
@@ -196,6 +207,9 @@ const renderCoachProfiles = () => {
           </article>
         `;
       }).join("");
+      const highlights = coach.highlights?.length
+        ? `<ul class="coach-highlights">${coach.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>`
+        : "";
 
       profile.className = "coach-profile";
       profile.setAttribute("aria-labelledby", profileTitleId);
@@ -206,6 +220,7 @@ const renderCoachProfiles = () => {
             <span class="coach-title">${coach.title}</span>
             <h3 id="${profileTitleId}">${coach.name}</h3>
             <p>${coach.bio}</p>
+            ${highlights}
           </div>
         </header>
         <section class="coach-offering" aria-label="${offering.name} packages for ${coach.name}">
@@ -330,7 +345,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=coaches-page";
+  script.src = "payment-config.js?v=coach-menu";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();
