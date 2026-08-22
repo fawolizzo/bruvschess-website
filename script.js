@@ -25,6 +25,12 @@ const enhanceProgramMenus = () => {
       else siteNav.append(coachesLink);
     }
 
+    // Deduplicate any extra Coaches links in the navigation bar
+    const coachesLinks = Array.from(siteNav.querySelectorAll('a[href="coaches.html"]'));
+    if (coachesLinks.length > 1) {
+      coachesLinks.slice(1).forEach((link) => link.remove());
+    }
+
     if (whatsappButton && siteNav.lastElementChild !== whatsappButton) {
       siteNav.append(whatsappButton);
     }
