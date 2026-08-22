@@ -11,16 +11,22 @@ const enhanceProgramMenus = () => {
   `;
 
   document.querySelectorAll(".site-nav").forEach((siteNav) => {
+    const whatsappButton = siteNav.querySelector(".whatsapp-button");
+    const teamLink = siteNav.querySelector('a[href^="team.html"]');
+
     if (!siteNav.querySelector('a[href="coaches.html"]')) {
       const coachesLink = document.createElement("a");
-      const teamLink = siteNav.querySelector('a[href^="team.html"]');
-
       coachesLink.href = "coaches.html";
       coachesLink.textContent = "Coaches";
 
       if (document.body.matches(".coaches-page")) coachesLink.setAttribute("aria-current", "page");
       if (teamLink) teamLink.before(coachesLink);
+      else if (whatsappButton) whatsappButton.before(coachesLink);
       else siteNav.append(coachesLink);
+    }
+
+    if (whatsappButton && siteNav.lastElementChild !== whatsappButton) {
+      siteNav.append(whatsappButton);
     }
 
     const existing = siteNav.querySelector(".has-submenu");

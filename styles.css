@@ -386,6 +386,89 @@ h3 {
   font-weight: 900;
 }
 
+/* Streamlined Subpage Hero Headers */
+.subpage-hero,
+.hero.lesson-hero:not(.coach-hero),
+.about-hero,
+.team-hero {
+  display: block;
+  min-height: auto;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1rem, 4vw, 4.5rem) clamp(1.5rem, 3vw, 2.25rem);
+  background: linear-gradient(135deg, rgba(43, 33, 135, 0.96), rgba(33, 21, 111, 0.98));
+  color: #fbf8ef;
+}
+
+.subpage-hero + .section,
+.team-hero + .section,
+.about-hero + .section,
+.hero.lesson-hero + .section {
+  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.subpage-hero .hero-copy,
+.hero.lesson-hero:not(.coach-hero) .hero-copy,
+.about-hero > div,
+.team-hero {
+  max-width: 860px;
+}
+
+.subpage-hero h1,
+.hero.lesson-hero h1,
+.about-hero h1,
+.team-hero h1 {
+  max-width: none;
+  margin-bottom: 0.75rem;
+  font-size: clamp(2.1rem, 4.2vw, 3.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.subpage-hero .eyebrow,
+.hero.lesson-hero .eyebrow,
+.about-hero .eyebrow,
+.team-hero .eyebrow {
+  margin-bottom: 0.45rem;
+  color: var(--gold);
+}
+
+.subpage-hero .lede,
+.hero.lesson-hero .lede,
+.about-hero .lede,
+.team-hero .lede {
+  max-width: 720px;
+  margin-bottom: 1.25rem;
+  color: rgba(251, 248, 239, 0.88);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+.subpage-hero .hero-actions,
+.hero.lesson-hero .hero-actions {
+  margin: 1.25rem 0 0;
+}
+
+/* Individual Coach Profile Hero */
+.hero.coach-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  min-height: auto;
+  padding: clamp(2rem, 4.5vw, 3.25rem) clamp(1rem, 4vw, 4.5rem);
+  background: linear-gradient(135deg, rgba(43, 33, 135, 0.96), rgba(33, 21, 111, 0.98));
+}
+
+.coach-hero h1 {
+  max-width: none;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.coach-hero .coach-portrait-panel {
+  justify-self: end;
+  width: 100%;
+}
+
 .coach-portrait {
   margin: 0;
   overflow: hidden;
@@ -1733,20 +1816,27 @@ h3 {
     display: flex;
   }
 
-  .hero {
+  .subpage-hero,
+  .hero.lesson-hero,
+  .about-hero,
+  .team-hero,
+  .hero.coach-hero {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .coach-hero .coach-portrait-panel {
+    justify-self: start;
+    max-width: 220px;
+  }
+
+  .home-page .hero {
     padding-top: 2.5rem;
   }
 
-  h1 {
+  .home-page h1 {
     font-size: clamp(3rem, 17vw, 4.7rem);
-  }
-
-  .about-hero h1 {
-    font-size: clamp(2.8rem, 12vw, 4.25rem);
-  }
-
-  .about-hero {
-    grid-template-columns: 1fr;
   }
 
   .about-logo-panel {
