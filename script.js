@@ -7,7 +7,6 @@ const enhanceProgramMenus = () => {
       <span>Private Coaching</span>
       <a href="private-chess-lessons.html">In-Person Private Coaching</a>
       <a href="online-chess-coaching.html">Online Chess Coaching</a>
-      <a href="chess-lessons-with-im-bunmi-olape.html">Lessons with IM Bunmi Olape</a>
     </div>
   `;
 
@@ -72,12 +71,14 @@ const enhancePrivateCoachingCards = () => {
       card.append(links);
     }
 
-    if (!links.querySelector('a[href="chess-lessons-with-im-bunmi-olape.html"]')) {
-      const bunmiLink = document.createElement("a");
-      bunmiLink.className = "text-link";
-      bunmiLink.href = "chess-lessons-with-im-bunmi-olape.html";
-      bunmiLink.textContent = "Lessons with IM Bunmi Olape";
-      links.append(bunmiLink);
+    links.querySelector('a[href="chess-lessons-with-im-bunmi-olape.html"]')?.remove();
+
+    if (!links.querySelector('a[href="coaches.html"]')) {
+      const coachesLink = document.createElement("a");
+      coachesLink.className = "text-link";
+      coachesLink.href = "coaches.html";
+      coachesLink.textContent = "Meet our coaches";
+      links.append(coachesLink);
     }
   });
 };
@@ -106,7 +107,7 @@ const loadPaymentStyles = () => {
 
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "payment.css?v=coach-menu";
+  link.href = "payment.css?v=coach-detail";
   document.head.append(link);
 };
 
@@ -253,6 +254,39 @@ const renderCoachProfiles = () => {
   });
 };
 
+const renderCoachDirectory = () => {
+  const coachingConfig = getCoachingConfig();
+  if (!coachingConfig) return;
+
+  document.querySelectorAll("[data-coach-directory]").forEach((container) => {
+    const offeringKey = container.dataset.coachDirectory;
+    const coaches = coachingConfig.coaches.filter((coach) => coach.offerings?.[offeringKey]);
+
+    container.innerHTML = "";
+    container.setAttribute("aria-label", "BruvsChess coach profiles");
+
+    coaches.forEach((coach) => {
+      const card = document.createElement("a");
+      const highlights = coach.highlights?.slice(0, 3).map((item) => `<li>${item}</li>`).join("") || "";
+
+      card.className = "coach-directory-card";
+      card.href = coach.profileUrl;
+      card.innerHTML = `
+        <img src="${coach.photo}" alt="${coach.fullName}">
+        <div class="coach-directory-card-copy">
+          <span class="coach-directory-title">${coach.title}</span>
+          <h3>${coach.name}</h3>
+          <p>${coach.bio}</p>
+          ${highlights ? `<ul>${highlights}</ul>` : ""}
+          <strong>View coach profile <span aria-hidden="true">→</span></strong>
+        </div>
+      `;
+
+      container.append(card);
+    });
+  });
+};
+
 const renderCoachingPrograms = () => {
   const coachingConfig = getCoachingConfig();
   if (!coachingConfig) return;
@@ -340,15 +374,17 @@ const loadPaymentConfig = () => {
   if (getCoachingConfig()) {
     loadPaymentStyles();
     renderCoachProfiles();
+    renderCoachDirectory();
     renderCoachingPrograms();
     return;
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=coach-menu";
+  script.src = "payment-config.js?v=coach-detail";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();
+    renderCoachDirectory();
     renderCoachingPrograms();
   };
   document.head.append(script);
