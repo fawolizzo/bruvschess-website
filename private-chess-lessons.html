@@ -30,7 +30,7 @@
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css?v=bank-transfer">
-    <link rel="stylesheet" href="payment.css?v=bank-transfer">
+    <link rel="stylesheet" href="payment.css?v=coach-profiles">
   </head>
   <body>
     <header class="site-header" id="top">
@@ -103,39 +103,39 @@
         <p>
           Payment is not the first step. BruvsChess first confirms whether coaching will be online
           or in person, the learner's needs, location, schedule, and the best package. Once that is
-          agreed, the customer can complete payment securely.
+          agreed, the customer can pay by bank transfer.
         </p>
       </section>
 
       <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
         <div class="private-lessons-copy">
-          <p class="eyebrow">In-person coaching options</p>
-          <h2 id="coaching-options-title">Choose a package after your arrangement is confirmed.</h2>
+          <p class="eyebrow">Meet the coach</p>
+          <h2 id="coaching-options-title">Choose a package offered by IM Bunmi Olape.</h2>
           <p>
-            These are the current in-person private coaching rates. After confirmation, pay securely
-            with Paystack or transfer directly to the BruvsChess Moniepoint account.
+            The prices shown here belong specifically to International Master Bunmi Olape. Future
+            coaches will have their own profiles, packages, and prices.
           </p>
           <div class="booking-steps" aria-label="Private lesson booking steps">
             <div>
               <span>01</span>
-              <strong>Discuss needs</strong>
-              <p>Tell us the learner's level, goals, location, and preferred schedule.</p>
+              <strong>Choose your coach</strong>
+              <p>Review the coach's profile, lesson format, packages, and prices.</p>
             </div>
             <div>
               <span>02</span>
-              <strong>Confirm arrangement</strong>
-              <p>We agree on format, availability, and the right coaching package.</p>
+              <strong>Book or contact</strong>
+              <p>Tell us the learner's level, goals, location, and preferred schedule.</p>
             </div>
             <div>
               <span>03</span>
-              <strong>Complete payment</strong>
-              <p>Pay with Paystack or bank transfer after the arrangement is clear.</p>
+              <strong>Pay by bank transfer</strong>
+              <p>Use the displayed BruvsChess account after the arrangement is confirmed.</p>
             </div>
           </div>
         </div>
 
         <div>
-          <div class="payment-options" data-payment-options="privateCoaching"></div>
+          <div class="coach-profiles" data-coach-profiles="inPerson" data-contact-url="#lesson-enquiry"></div>
         </div>
       </section>
 
@@ -160,6 +160,7 @@
         <form class="contact-form booking-form" name="private-lessons" action="/thank-you/" method="post" netlify data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="private-lessons">
           <input type="hidden" name="subject" data-remove-prefix value="New BruvsChess private lesson enquiry (%{submissionId})">
+          <input type="hidden" name="coach" value="IM Bunmi Olape">
           <p class="hidden-field">
             <label>Do not fill this out if you are human <input name="bot-field"></label>
           </p>
@@ -232,7 +233,7 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="payment-config.js?v=bank-transfer"></script>
-    <script src="script.js?v=bank-transfer"></script>
+    <script src="payment-config.js?v=coach-profiles"></script>
+    <script src="script.js?v=coach-profiles"></script>
   </body>
 </html>

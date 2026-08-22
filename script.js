@@ -90,25 +90,17 @@ if (nav) {
 }
 
 const loadPaymentStyles = () => {
-  if (document.querySelector('link[href$="payment.css"]')) return;
+  if (document.querySelector('link[href*="payment.css"]')) return;
 
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "payment.css?v=bank-transfer";
+  link.href = "payment.css?v=coach-profiles";
   document.head.append(link);
 };
 
 const formatNaira = (amount) => `₦${Number(amount).toLocaleString("en-NG")}`;
 
-const getPaymentConfig = () => window.BRUVSCHESS_PAYMENTS;
-
-const isCoachingPaymentPage = () => (
-  window.location.pathname.endsWith("/private-chess-lessons.html") ||
-  window.location.pathname.endsWith("/online-chess-coaching.html") ||
-  window.location.pathname.endsWith("/chess-lessons-with-im-bunmi-olape.html") ||
-  window.location.pathname.endsWith("/im-bunmi-olape") ||
-  window.location.pathname.endsWith("/im-bunmi-olape/")
-);
+const getCoachingConfig = () => window.BRUVSCHESS_COACHING;
 
 const updatePrivateLessonLinks = () => {
   document.querySelectorAll('a[href="chess-lessons-abuja.html"]').forEach((link) => {
@@ -117,118 +109,107 @@ const updatePrivateLessonLinks = () => {
   });
 };
 
-const updateLegacyPaymentLinks = () => {
-  document.querySelectorAll(".paystack-link").forEach((link) => {
-    link.href = "private-chess-lessons.html";
-    link.removeAttribute("target");
-    link.removeAttribute("rel");
-    link.textContent = "View private lesson options";
-  });
-};
-
-const hideInlinePricingOutsidePrivatePage = () => {
-  if (isCoachingPaymentPage()) return;
-
-  document.querySelectorAll("[data-payment-options]").forEach((container) => {
-    const copy = container.closest(".private-lessons-copy");
-    const paymentCopy = copy?.querySelector(".payment-copy");
-    const link = document.createElement("a");
-
-    link.className = "button secondary";
-    link.href = "private-chess-lessons.html";
-    link.textContent = "View private lesson options";
-
-    if (paymentCopy) paymentCopy.remove();
-    container.replaceWith(link);
-  });
-};
-
 const renderBankTransferSummaries = () => {
-  const bankTransfer = getPaymentConfig()?.bankTransfer;
+  const bankTransfer = getCoachingConfig()?.bankTransfer;
   if (!bankTransfer) return;
 
   document.querySelectorAll("[data-bank-transfer-summary]").forEach((summary) => {
     summary.innerHTML = `
       <div>
-        <span>Lesson payment options</span>
-        <strong>Paystack or bank transfer</strong>
+        <span>Lesson payment method</span>
+        <strong>Bank transfer</strong>
       </div>
       <div>
         <p><b>${bankTransfer.bankName}</b> · ${bankTransfer.accountNumber}</p>
         <small>${bankTransfer.accountName}</small>
       </div>
-      <small class="program-payment-reminder">Pay only after your lesson arrangement is confirmed.</small>
+      <small class="program-payment-reminder">Contact your coach and confirm the package before making payment.</small>
     `;
   });
 };
 
-const renderPaymentOptions = () => {
-  const paymentConfig = getPaymentConfig();
-  if (!paymentConfig) return;
+const renderCoachProfiles = () => {
+  const coachingConfig = getCoachingConfig();
+  if (!coachingConfig) return;
 
   updatePrivateLessonLinks();
-  updateLegacyPaymentLinks();
-  hideInlinePricingOutsidePrivatePage();
   renderBankTransferSummaries();
 
-  if (!isCoachingPaymentPage()) return;
+  document.querySelectorAll("[data-coach-profiles]").forEach((container) => {
+    const offeringKey = container.dataset.coachProfiles;
+    const coachId = container.dataset.coachId;
+    const contactUrlOverride = container.dataset.contactUrl;
+    const bankTransfer = coachingConfig.bankTransfer;
+    const coaches = coachingConfig.coaches.filter((coach) => (
+      coach.offerings?.[offeringKey] && (!coachId || coach.id === coachId)
+    ));
 
-  document.querySelectorAll("[data-payment-options]").forEach((container) => {
-    const serviceKey = container.getAttribute("data-payment-options");
-    const service = paymentConfig.services?.[serviceKey];
-    const bankTransfer = paymentConfig.bankTransfer;
-
-    if (!service || !bankTransfer) return;
+    if (!bankTransfer || !coaches.length) return;
 
     container.innerHTML = "";
-    container.setAttribute("aria-label", `${service.serviceName} payment options`);
+    container.setAttribute("aria-label", `Coaches offering ${offeringKey} lessons`);
 
-    service.packages.forEach((item) => {
-      const perSession = item.sessions > 1 ? Math.round(item.price / item.sessions) : null;
-      const card = document.createElement("article");
-      card.className = "payment-option-card";
+    coaches.forEach((coach) => {
+      const offering = coach.offerings[offeringKey];
+      const profile = document.createElement("article");
+      const profileTitleId = `${coach.id}-${offeringKey}-title`;
+      const packages = offering.packages.map((item) => {
+        const perSession = item.sessions > 1 ? Math.round(item.price / item.sessions) : null;
+        const priceDetail = item.priceSuffix || (perSession
+          ? `${formatNaira(perSession)} per lesson`
+          : "Single coaching lesson");
 
-      const priceSuffixText = item.priceSuffix ? `<small>${item.priceSuffix}</small>` : "";
-      const perSessionText = perSession && !item.priceSuffix
-        ? `<small>${formatNaira(perSession)} per session</small>`
-        : "<small>Single coaching session</small>";
+        return `
+          <article class="coach-package-card">
+            <div>
+              <span>${item.label}</span>
+              <h4>${item.name}</h4>
+            </div>
+            <strong>${formatNaira(item.price)}</strong>
+            <small>${priceDetail}</small>
+            <p>${item.description}</p>
+          </article>
+        `;
+      }).join("");
 
-      card.innerHTML = `
-        <div>
-          <span>${item.label}</span>
-          <h3>${item.name}</h3>
-        </div>
-        <strong>${formatNaira(item.price)}</strong>
-        ${priceSuffixText || perSessionText}
-        <p>${item.description}</p>
+      profile.className = "coach-profile";
+      profile.setAttribute("aria-labelledby", profileTitleId);
+      profile.innerHTML = `
+        <header class="coach-profile-header">
+          <img src="${coach.photo}" alt="${coach.fullName}">
+          <div>
+            <span class="coach-title">${coach.title}</span>
+            <h3 id="${profileTitleId}">${coach.name}</h3>
+            <p>${coach.bio}</p>
+          </div>
+        </header>
+        <section class="coach-offering" aria-label="${offering.name} packages for ${coach.name}">
+          <div class="coach-offering-heading">
+            <span>${offering.name}</span>
+            <h4>${coach.name}'s lesson packages</h4>
+            <p>These prices apply specifically to ${coach.name}.</p>
+          </div>
+          <div class="coach-package-grid">${packages}</div>
+        </section>
+        <footer class="coach-profile-footer">
+          <section class="coach-bank-transfer" aria-labelledby="${coach.id}-${offeringKey}-transfer-title">
+            <span class="payment-method-label">Bank transfer</span>
+            <h4 id="${coach.id}-${offeringKey}-transfer-title">Pay after your booking is confirmed</h4>
+            <dl class="bank-details">
+              <div><dt>Account name</dt><dd>${bankTransfer.accountName}</dd></div>
+              <div><dt>Account number</dt><dd><strong>${bankTransfer.accountNumber}</strong></dd></div>
+              <div><dt>Bank</dt><dd>${bankTransfer.bankName}</dd></div>
+            </dl>
+            <button class="button secondary copy-account-number" type="button" data-account-number="${bankTransfer.accountNumber}">Copy account number</button>
+            <p class="transfer-note">Use the learner's full name as the transfer narration, then send proof of payment to <a href="mailto:info@bruvschess.org">info@bruvschess.org</a>.</p>
+            <p class="copy-status" role="status" aria-live="polite"></p>
+          </section>
+          <a class="button primary coach-contact-button" href="${contactUrlOverride || coach.contactUrl}">${coach.contactLabel}</a>
+        </footer>
       `;
 
-      container.append(card);
+      container.append(profile);
     });
-
-    const cta = document.createElement("div");
-    cta.className = "payment-methods";
-    cta.innerHTML = `
-      <section class="payment-method-card payment-method-online" aria-labelledby="${serviceKey}-paystack-title">
-        <span class="payment-method-label">Pay online</span>
-        <h3 id="${serviceKey}-paystack-title">Pay securely with Paystack</h3>
-        <p>Select your confirmed package on our secure Paystack checkout page.</p>
-        <a class="button primary payment-option-link" href="${service.paymentUrl}" target="_blank" rel="noreferrer">Continue to Paystack</a>
-      </section>
-      <section class="payment-method-card payment-method-transfer" aria-labelledby="${serviceKey}-transfer-title">
-        <span class="payment-method-label">Bank transfer</span>
-        <h3 id="${serviceKey}-transfer-title">Transfer to our Moniepoint account</h3>
-        <dl class="bank-details">
-          <div><dt>Account name</dt><dd>${bankTransfer.accountName}</dd></div>
-          <div><dt>Account number</dt><dd><strong>${bankTransfer.accountNumber}</strong></dd></div>
-          <div><dt>Bank</dt><dd>${bankTransfer.bankName}</dd></div>
-        </dl>
-        <button class="button secondary copy-account-number" type="button" data-account-number="${bankTransfer.accountNumber}">Copy account number</button>
-        <p class="transfer-note">Pay only after your lesson arrangement is confirmed. Use the learner's full name as the transfer narration, then send proof of payment to <a href="mailto:info@bruvschess.org">info@bruvschess.org</a>.</p>
-        <p class="copy-status" role="status" aria-live="polite"></p>
-      </section>
-    `;
-    container.after(cta);
   });
 };
 
@@ -251,22 +232,20 @@ document.addEventListener("click", async (event) => {
 });
 
 const loadPaymentConfig = () => {
-  if (getPaymentConfig()) {
+  if (getCoachingConfig()) {
     loadPaymentStyles();
-    renderPaymentOptions();
+    renderCoachProfiles();
     return;
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=bank-transfer";
+  script.src = "payment-config.js?v=coach-profiles";
   script.onload = () => {
     loadPaymentStyles();
-    renderPaymentOptions();
+    renderCoachProfiles();
   };
   document.head.append(script);
 };
 
 loadPaymentConfig();
 updatePrivateLessonLinks();
-updateLegacyPaymentLinks();
-hideInlinePricingOutsidePrivatePage();
