@@ -129,7 +129,7 @@ window.BRUVSCHESS_COACHING = {
               name: "10-Lesson In-Person Package",
               label: "10 lessons",
               sessions: 10,
-              price: 247500,
+              price: 250000,
               description: "Ten sessions with Adegbayi Oluwadara for structured training and longer-term development."
             }
           ]
