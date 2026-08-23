@@ -559,7 +559,7 @@ h3 {
 }
 
 .home-page .intro > p {
-  max-width: 94ch;
+  max-width: none;
   margin: 1rem 0 0;
 }
 
@@ -619,64 +619,6 @@ h3 {
   display: grid;
   gap: 0.45rem;
   margin-top: auto;
-}
-
-.program-payment-note {
-  display: grid;
-  gap: 0.3rem;
-  margin-top: 1rem;
-  padding: 0.85rem;
-  color: var(--purple-dark);
-  background: rgba(15, 118, 110, 0.07);
-  border: 1px solid rgba(15, 118, 110, 0.18);
-  border-radius: 10px;
-}
-
-.program-payment-note > div {
-  display: grid;
-  align-content: center;
-  gap: 0.3rem;
-}
-
-.program-payment-banner {
-  grid-template-columns: minmax(190px, 0.8fr) minmax(250px, 1fr) minmax(220px, 1fr);
-  gap: 1rem;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 1rem 1.15rem;
-}
-
-.program-payment-note span {
-  color: var(--teal-dark);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.program-payment-note strong {
-  font-size: 0.95rem;
-}
-
-.program-payment-note p,
-.program-payment-note small {
-  margin: 0;
-  line-height: 1.4;
-}
-
-.program-payment-note p {
-  color: var(--purple-dark);
-  font-size: 0.88rem;
-}
-
-.program-payment-note small {
-  color: var(--muted);
-  font-size: 0.76rem;
-}
-
-.program-payment-reminder {
-  padding-left: 1rem;
-  border-left: 1px solid rgba(15, 118, 110, 0.18);
 }
 
 .private-lessons {
@@ -1958,16 +1900,6 @@ h3 {
 
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .program-payment-banner {
-    grid-template-columns: 1fr;
-  }
-
-  .program-payment-reminder {
-    padding: 0.75rem 0 0;
-    border-top: 1px solid rgba(15, 118, 110, 0.18);
-    border-left: 0;
   }
 
   .state-grid {

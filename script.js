@@ -147,25 +147,6 @@ const updatePrivateLessonLinks = () => {
   });
 };
 
-const renderBankTransferSummaries = () => {
-  const bankTransfer = getCoachingConfig()?.bankTransfer;
-  if (!bankTransfer) return;
-
-  document.querySelectorAll("[data-bank-transfer-summary]").forEach((summary) => {
-    summary.innerHTML = `
-      <div>
-        <span>Lesson payment method</span>
-        <strong>Bank transfer</strong>
-      </div>
-      <div>
-        <p><b>${bankTransfer.bankName}</b> · ${bankTransfer.accountNumber}</p>
-        <small>${bankTransfer.accountName}</small>
-      </div>
-      <small class="program-payment-reminder">Contact your coach and confirm the package before making payment.</small>
-    `;
-  });
-};
-
 const populateCoachSelects = () => {
   const coachingConfig = getCoachingConfig();
   if (!coachingConfig) return;
@@ -248,7 +229,6 @@ const renderCoachProfiles = () => {
   if (!coachingConfig) return;
 
   updatePrivateLessonLinks();
-  renderBankTransferSummaries();
   populateCoachSelects();
 
   document.querySelectorAll("[data-coach-profiles]").forEach((container) => {
