@@ -446,7 +446,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=yazid-profile";
+  script.src = "payment-config.js?v=abdulyazid-profile";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();
