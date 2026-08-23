@@ -1,6 +1,13 @@
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".site-nav");
 
+const linkPointsToPage = (link, pageName) => {
+  const pathname = new URL(link.href, window.location.href).pathname.replace(/\/+$/, "");
+  const cleanPageName = pageName.replace(/\.html$/, "");
+
+  return pathname === `/${pageName}` || pathname === `/${cleanPageName}`;
+};
+
 const enhanceProgramMenus = () => {
   const submenuMarkup = `
     <div class="nav-subgroup">
@@ -14,7 +21,11 @@ const enhanceProgramMenus = () => {
     const whatsappButton = siteNav.querySelector(".whatsapp-button");
     const teamLink = siteNav.querySelector('a[href^="team.html"]');
 
-    if (!siteNav.querySelector('a[href="coaches.html"]')) {
+    let coachesLinks = Array.from(siteNav.querySelectorAll("a")).filter((link) => (
+      linkPointsToPage(link, "coaches.html")
+    ));
+
+    if (!coachesLinks.length) {
       const coachesLink = document.createElement("a");
       coachesLink.href = "coaches.html";
       coachesLink.textContent = "Coaches";
@@ -23,10 +34,10 @@ const enhanceProgramMenus = () => {
       if (teamLink) teamLink.before(coachesLink);
       else if (whatsappButton) whatsappButton.before(coachesLink);
       else siteNav.append(coachesLink);
+
+      coachesLinks = [coachesLink];
     }
 
-    // Deduplicate any extra Coaches links in the navigation bar
-    const coachesLinks = Array.from(siteNav.querySelectorAll('a[href="coaches.html"]'));
     if (coachesLinks.length > 1) {
       coachesLinks.slice(1).forEach((link) => link.remove());
     }
@@ -83,9 +94,11 @@ const enhancePrivateCoachingCards = () => {
       card.append(links);
     }
 
-    links.querySelector('a[href="chess-lessons-with-im-bunmi-olape.html"]')?.remove();
+    Array.from(links.querySelectorAll("a"))
+      .filter((link) => linkPointsToPage(link, "chess-lessons-with-im-bunmi-olape.html"))
+      .forEach((link) => link.remove());
 
-    if (!links.querySelector('a[href="coaches.html"]')) {
+    if (!Array.from(links.querySelectorAll("a")).some((link) => linkPointsToPage(link, "coaches.html"))) {
       const coachesLink = document.createElement("a");
       coachesLink.className = "text-link";
       coachesLink.href = "coaches.html";
