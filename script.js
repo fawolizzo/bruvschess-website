@@ -446,7 +446,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=standard-coach-pricing";
+  script.src = "payment-config.js?v=social-card-v2";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();
