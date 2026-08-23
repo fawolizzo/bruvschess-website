@@ -59,7 +59,7 @@ window.BRUVSCHESS_COACHING = {
         "Former coach of the Oyo State chess team",
         "Peak FIDE rating: 2306"
       ],
-      profileUrl: "chess-lessons-with-im-bunmi-olape.html?card=full-face-v2",
+      profileUrl: "chess-lessons-with-im-bunmi-olape.html",
       contactUrl: "chess-lessons-with-im-bunmi-olape.html#lesson-enquiry",
       contactLabel: "Book / Contact IM Bunmi",
       offerings: {
@@ -104,7 +104,7 @@ window.BRUVSCHESS_COACHING = {
         "National Sports Festival silver-medal coach",
         "Current CPAN President"
       ],
-      profileUrl: "chess-lessons-with-adegbayi-oluwadara.html?card=full-face-v2",
+      profileUrl: "chess-lessons-with-adegbayi-oluwadara.html",
       contactUrl: "chess-lessons-with-adegbayi-oluwadara.html#lesson-enquiry",
       contactLabel: "Book / Contact Adegbayi",
       offerings: {
@@ -149,7 +149,7 @@ window.BRUVSCHESS_COACHING = {
         "Senior Advisor, Programs and Development",
         "Supports instructor development, partnerships, and nationwide growth"
       ],
-      profileUrl: "chess-lessons-with-engr-abdulyazid-aliyu.html?card=full-face-v2",
+      profileUrl: "chess-lessons-with-engr-abdulyazid-aliyu.html",
       contactUrl: "chess-lessons-with-engr-abdulyazid-aliyu.html#lesson-enquiry",
       contactLabel: "Book / Contact Engr. AbdulYazid",
       offerings: {
