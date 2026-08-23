@@ -30,7 +30,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=streamlined-programs-2">
+    <link rel="stylesheet" href="styles.css?v=wide-layout-2">
     <link rel="stylesheet" href="payment.css?v=coach-detail">
     <script type="application/ld+json">
       {
@@ -49,7 +49,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="coach-detail-page">
     <header class="site-header" id="top">
       <a class="brand" href="index.html#top" aria-label="BruvsChess Educational Services home">
         <img class="brand-mark" src="assets/bruvschess-logo-cropped.jpeg" alt="">
@@ -92,71 +92,19 @@
       <section class="hero lesson-hero coach-hero">
         <div class="hero-copy">
           <p class="eyebrow">Featured coach</p>
-          <h1>Chess lessons with IM Bunmi Olape.</h1>
+          <h1>IM Bunmi Olape</h1>
           <p class="lede">
-            Book an in-person private lesson with International Master Bunmi Olape through
-            BruvsChess Educational Services. Review his individual lesson packages and contact
-            us to confirm your booking before making a bank transfer.
+            International Master, former Nigerian National Chess Champion, FIDE-certified
+            instructor, and experienced coach.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#coaching-options">View lesson packages</a>
-            <a class="button secondary" href="#lesson-enquiry">Request a booking</a>
           </div>
         </div>
-
-        <div class="hero-brand-panel coach-portrait-panel" aria-label="International Master Bunmi Olape">
-          <figure class="coach-portrait">
-            <img src="assets/im-bunmi-olape.jpg" alt="International Master Bunmi Olape">
-            <figcaption>
-              <strong>IM Bunmi Olape</strong>
-              <span>International Master</span>
-            </figcaption>
-          </figure>
-        </div>
       </section>
-
-      <section class="section intro" aria-labelledby="bunmi-flow-title">
-        <div>
-          <p class="eyebrow">How booking works</p>
-          <h2 id="bunmi-flow-title">Choose a package, contact us, and confirm your lesson.</h2>
-        </div>
-        <p>
-          These prices and packages belong specifically to IM Bunmi Olape. Our team confirms the
-          schedule, location, and next steps before you pay by bank transfer.
-        </p>
-      </section>
-
-      <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
-        <div class="private-lessons-copy">
-          <p class="eyebrow">In-person packages</p>
-          <h2 id="coaching-options-title">Book a lesson with IM Bunmi Olape.</h2>
-          <p>
-            Select a single lesson, a 5-lesson package, or a 10-lesson package offered by IM Bunmi
-            Olape, then contact us to confirm availability.
-          </p>
-          <div class="booking-steps" aria-label="IM Bunmi Olape booking steps">
-            <div>
-              <span>01</span>
-              <strong>Choose a package</strong>
-              <p>Pick the single lesson or pack that fits your goals.</p>
-            </div>
-            <div>
-              <span>02</span>
-              <strong>Contact BruvsChess</strong>
-              <p>Send the learner's details and preferred lesson schedule.</p>
-            </div>
-            <div>
-              <span>03</span>
-              <strong>Confirm and transfer</strong>
-              <p>After confirmation, pay to the displayed BruvsChess bank account.</p>
-            </div>
-          </div>
-          <a class="button secondary" href="coaches.html">Back to all coaches</a>
-        </div>
-
-        <div>
-          <div class="coach-profiles" data-coach-profiles="inPerson" data-coach-id="im-bunmi-olape" data-contact-url="#lesson-enquiry"></div>
-        </div>
+      <section class="section coach-detail-content" id="coaching-options" aria-label="IM Bunmi Olape profile and lesson packages">
+        <div class="coach-profiles" data-coach-profiles="inPerson" data-coach-id="im-bunmi-olape" data-contact-url="#lesson-enquiry"></div>
+        <a class="button secondary back-to-coaches" href="coaches.html">Back to all coaches</a>
       </section>
 
       <section class="section contact" id="lesson-enquiry" aria-labelledby="lesson-enquiry-title">
