@@ -29,10 +29,10 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=bank-transfer">
+    <link rel="stylesheet" href="styles.css?v=streamlined-programs-3">
     <link rel="stylesheet" href="payment.css?v=coach-menu">
   </head>
-  <body>
+  <body class="private-coaching-page">
     <header class="site-header" id="top">
       <a class="brand" href="index.html#top" aria-label="BruvsChess Educational Services home">
         <img class="brand-mark" src="assets/bruvschess-logo-cropped.jpeg" alt="">
@@ -81,53 +81,8 @@
             learner's age, level, goals, location, and preferred schedule.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#lesson-enquiry">Request an arrangement</a>
-            <a class="button secondary" href="#coaching-options">View coaching options</a>
+            <a class="button primary" href="#lesson-enquiry">Choose a coach and view prices</a>
           </div>
-        </div>
-      </section>
-
-      <section class="section intro" aria-labelledby="private-flow-title">
-        <div>
-          <p class="eyebrow">How payment works</p>
-          <h2 id="private-flow-title">Confirm the coaching arrangement before payment.</h2>
-        </div>
-        <p>
-          Payment is not the first step. BruvsChess first confirms whether coaching will be online
-          or in person, the learner's needs, location, schedule, and the best package. Once that is
-          agreed, the customer can pay by bank transfer.
-        </p>
-      </section>
-
-      <section class="section private-lessons" id="coaching-options" aria-labelledby="coaching-options-title">
-        <div class="private-lessons-copy">
-          <p class="eyebrow">Meet the coach</p>
-          <h2 id="coaching-options-title">Choose your coach and in-person lesson package.</h2>
-          <p>
-            Each BruvsChess coach has an individual profile, experience, packages, and prices.
-            Compare the options below and contact us to confirm the best fit.
-          </p>
-          <div class="booking-steps" aria-label="Private lesson booking steps">
-            <div>
-              <span>01</span>
-              <strong>Choose your coach</strong>
-              <p>Review the coach's profile, lesson format, packages, and prices.</p>
-            </div>
-            <div>
-              <span>02</span>
-              <strong>Book or contact</strong>
-              <p>Tell us the learner's level, goals, location, and preferred schedule.</p>
-            </div>
-            <div>
-              <span>03</span>
-              <strong>Pay by bank transfer</strong>
-              <p>Use the displayed BruvsChess account after the arrangement is confirmed.</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="coach-profiles" data-coach-profiles="inPerson"></div>
         </div>
       </section>
 
@@ -135,10 +90,10 @@
         <div class="contact-panel">
           <div>
             <p class="eyebrow">Start here</p>
-            <h2 id="lesson-enquiry-title">Request a private chess lesson arrangement.</h2>
+            <h2 id="lesson-enquiry-title">Request a private lesson.</h2>
             <p>
-              Send the learner details first. Our team will review the request and confirm the next
-              step before payment.
+              Select a coach in the form to see that coach's lesson prices. We will confirm the
+              arrangement before payment.
             </p>
           </div>
           <address class="office-card">
@@ -199,6 +154,9 @@
               <option value="not-sure">Not sure — help me choose</option>
             </select>
           </label>
+          <div class="selected-coach-pricing form-field-wide" data-selected-coach-pricing aria-live="polite">
+            <p>Select a coach to view their in-person lesson prices.</p>
+          </div>
           <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
@@ -232,6 +190,6 @@
     </footer>
 
     <script src="payment-config.js?v=coach-detail"></script>
-    <script src="script.js?v=nav-dedupe"></script>
+    <script src="script.js?v=streamlined-programs"></script>
   </body>
 </html>

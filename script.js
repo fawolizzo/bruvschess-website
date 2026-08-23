@@ -186,7 +186,61 @@ const populateCoachSelects = () => {
 
         if (coach.id === requestedCoachId) select.value = coach.name;
       });
+
+    renderSelectedCoachPricing(select);
   });
+};
+
+const renderSelectedCoachPricing = (select) => {
+  const coachingConfig = getCoachingConfig();
+  const pricingPanel = select.closest("form")?.querySelector("[data-selected-coach-pricing]");
+  if (!coachingConfig || !pricingPanel) return;
+
+  const coachId = select.selectedOptions[0]?.dataset.coachOption;
+  const coach = coachingConfig.coaches.find((item) => item.id === coachId);
+  const offering = coach?.offerings?.inPerson;
+
+  if (!coach || !offering) {
+    pricingPanel.innerHTML = select.value === "not-sure"
+      ? "<p>Not sure who to choose? Send the form and our team will recommend a suitable coach.</p>"
+      : "<p>Select a coach to view their in-person lesson prices.</p>";
+    pricingPanel.classList.remove("has-prices");
+    return;
+  }
+
+  const packages = offering.packages.map((item) => {
+    const perSession = item.sessions > 1 ? Math.round(item.price / item.sessions) : null;
+    const priceDetail = item.priceSuffix || (perSession
+      ? `${formatNaira(perSession)} per lesson`
+      : "Single coaching lesson");
+
+    return `
+      <article class="coach-package-card">
+        <div>
+          <span>${item.label}</span>
+          <h4>${item.name}</h4>
+        </div>
+        <strong>${formatNaira(item.price)}</strong>
+        <small>${priceDetail}</small>
+        <p>${item.description}</p>
+      </article>
+    `;
+  }).join("");
+
+  const bankTransfer = coachingConfig.bankTransfer;
+  pricingPanel.classList.add("has-prices");
+  pricingPanel.innerHTML = `
+    <div class="selected-coach-pricing-heading">
+      <span>Prices for ${coach.name}</span>
+      <strong>${offering.name}</strong>
+    </div>
+    <div class="coach-package-grid">${packages}</div>
+    <div class="selected-coach-bank">
+      <span>Pay after your booking is confirmed</span>
+      <strong>${bankTransfer.accountName}</strong>
+      <p>${bankTransfer.bankName} · ${bankTransfer.accountNumber}</p>
+    </div>
+  `;
 };
 
 const renderCoachProfiles = () => {
@@ -342,17 +396,19 @@ const renderCoachingPrograms = () => {
       `;
     }).join("");
 
+    const compactProgram = container.hasAttribute("data-compact-program");
+
     container.innerHTML = `
       <article class="coach-profile online-program-profile" aria-labelledby="${programKey}-title">
-        <header class="online-program-header">
+        ${compactProgram ? "" : `<header class="online-program-header">
           <span class="coach-title">${program.name}</span>
           <h3 id="${programKey}-title">${program.title}</h3>
           <p>${program.description}</p>
-        </header>
+        </header>`}
         <section class="coach-offering" aria-label="${program.name} packages">
           <div class="coach-offering-heading">
-            <span>Flexible online coaching</span>
-            <h4>Choose an online lesson package</h4>
+            <span>${program.name}</span>
+            <h4${compactProgram ? ` id="${programKey}-title"` : ""}>Choose an online lesson package</h4>
             <p>Your instructor is assigned according to the learner's needs and availability.</p>
           </div>
           <div class="coach-package-grid">${packages}</div>
@@ -393,6 +449,11 @@ document.addEventListener("click", async (event) => {
   } catch {
     if (status) status.textContent = `Copy this account number: ${accountNumber}`;
   }
+});
+
+document.addEventListener("change", (event) => {
+  if (!(event.target instanceof HTMLSelectElement)) return;
+  if (event.target.matches("[data-coach-select]")) renderSelectedCoachPricing(event.target);
 });
 
 const loadPaymentConfig = () => {
