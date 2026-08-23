@@ -408,7 +408,7 @@ h3 {
 .subpage-hero .hero-copy,
 .hero.lesson-hero:not(.coach-hero) .hero-copy,
 .about-hero > div,
-.team-hero {
+.team-hero > .hero-copy {
   max-width: 860px;
 }
 
@@ -1398,25 +1398,31 @@ h3 {
 }
 
 .about-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.6fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
-  padding: clamp(4rem, 9vw, 7rem) clamp(1rem, 4vw, 4.5rem);
+  display: block;
+  width: 100%;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 4.5rem);
   background:
     linear-gradient(135deg, rgba(43, 33, 135, 0.94), rgba(18, 103, 95, 0.94)),
     var(--purple);
   color: #fbf8ef;
 }
 
+.about-hero > div {
+  max-width: none;
+}
+
 .about-hero h1 {
-  max-width: 12ch;
-  font-size: clamp(3.5rem, 8vw, 6.4rem);
+  max-width: none;
+  font-size: clamp(2rem, 2.5vw, 2.3rem);
 }
 
 .about-hero .eyebrow,
 .about-hero .lede {
   color: rgba(251, 248, 239, 0.82);
+}
+
+.about-hero .lede {
+  max-width: none;
 }
 
 .about-logo-panel {
@@ -1509,20 +1515,62 @@ h3 {
 }
 
 .team-hero {
-  padding: clamp(4rem, 9vw, 7rem) clamp(1rem, 4vw, 4.5rem);
+  display: block;
+  width: 100%;
+  max-width: none;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 4.5rem);
   background:
     linear-gradient(135deg, rgba(43, 33, 135, 0.94), rgba(33, 21, 111, 0.98)),
     var(--purple);
   color: #fbf8ef;
 }
 
+.team-hero > .hero-copy {
+  max-width: none;
+}
+
 .team-hero h1 {
-  max-width: 11ch;
+  max-width: none;
+  font-size: clamp(2rem, 3vw, 2.75rem);
 }
 
 .team-hero .eyebrow,
 .team-hero .lede {
   color: rgba(251, 248, 239, 0.82);
+}
+
+.team-hero .lede {
+  max-width: none;
+}
+
+.coaches-page .subpage-hero .hero-copy {
+  max-width: none;
+}
+
+.coaches-page .subpage-hero h1 {
+  max-width: none;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+}
+
+.coaches-page .subpage-hero .lede {
+  max-width: none;
+  font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+}
+
+@media (min-width: 1050px) {
+  .coaches-page .subpage-hero h1,
+  .coaches-page .subpage-hero .lede,
+  .team-page .team-hero h1,
+  .team-page .team-hero .lede,
+  .about-page .about-hero h1,
+  .about-page .about-hero .lede {
+    white-space: nowrap;
+  }
+
+  .team-page .team-hero .lede,
+  .about-page .about-hero .lede {
+    font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+  }
 }
 
 .team-directory {
