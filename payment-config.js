@@ -135,6 +135,51 @@ window.BRUVSCHESS_COACHING = {
           ]
         }
       }
+    },
+    {
+      id: "engr-yazid-aliyu",
+      name: "Engr. Yazid Aliyu",
+      fullName: "Engr. Yazid Aliyu",
+      title: "Chess Coach · Senior Advisor, Programs and Development",
+      photo: "assets/abdulyazid-aliyu.jpg",
+      bio: "Engr. Yazid Aliyu is a practical chess coach who teaches learners aged five and above by demonstrating why chess ideas work rather than asking students to simply memorize moves. He also serves as Senior Advisor, Programs and Development at BruvsChess Educational Services, providing strategic guidance on program development, chess education initiatives, instructor support, partnerships, and nationwide growth.",
+      highlights: [
+        "Practical, idea-based chess instruction",
+        "Coaches learners aged five and above",
+        "Senior Advisor, Programs and Development",
+        "Supports instructor development, partnerships, and nationwide growth"
+      ],
+      profileUrl: "chess-lessons-with-engr-yazid-aliyu.html",
+      contactUrl: "chess-lessons-with-engr-yazid-aliyu.html#lesson-enquiry",
+      contactLabel: "Book / Contact Engr. Yazid",
+      offerings: {
+        inPerson: {
+          name: "In-person coaching",
+          packages: [
+            {
+              name: "Single In-Person Lesson",
+              label: "Single lesson",
+              sessions: 1,
+              price: 30000,
+              description: "A focused one-on-one session with Engr. Yazid Aliyu after the learner's needs, location, and schedule are confirmed."
+            },
+            {
+              name: "5-Lesson In-Person Package",
+              label: "5 lessons",
+              sessions: 5,
+              price: 135000,
+              description: "Five scheduled sessions with Engr. Yazid Aliyu for practical learning, guided practice, and steady improvement."
+            },
+            {
+              name: "10-Lesson In-Person Package",
+              label: "10 lessons",
+              sessions: 10,
+              price: 247500,
+              description: "Ten sessions with Engr. Yazid Aliyu for structured training and longer-term development."
+            }
+          ]
+        }
+      }
     }
   ]
 };
