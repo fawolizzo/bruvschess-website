@@ -446,7 +446,7 @@ const loadPaymentConfig = () => {
   }
 
   const script = document.createElement("script");
-  script.src = "payment-config.js?v=standard-coach-pricing";
+  script.src = "payment-config.js?v=andrew-tovshima";
   script.onload = () => {
     loadPaymentStyles();
     renderCoachProfiles();

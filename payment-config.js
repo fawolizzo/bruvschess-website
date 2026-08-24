@@ -180,6 +180,51 @@ window.BRUVSCHESS_COACHING = {
           ]
         }
       }
+    },
+    {
+      id: "andrew-tovshima",
+      name: "Andrew Tovshima",
+      fullName: "Andrew Tovshima (Mista Andy)",
+      title: "Lead Chess Instructor",
+      photo: "assets/andrew-tovshima.jpg",
+      bio: "Andrew Tovshima, known as Mista Andy, is a Lead Chess Instructor at BruvsChess Educational Services. A committed chess player since 2005 and a coach since 2021, he teaches a practical system that helps children and adults understand positions and find strong moves independently instead of relying on memorization. He has delivered one-on-one lessons and taught in leading schools through the BruvsChess Chess in Schools program. He also plays in and hosts tournaments and serves as a chess arbiter.",
+      highlights: [
+        "Chess player since 2005",
+        "Coaching children and adults since 2021",
+        "BruvsChess Chess in Schools instructor",
+        "Tournament host and chess arbiter"
+      ],
+      profileUrl: "chess-lessons-with-andrew-tovshima.html",
+      contactUrl: "chess-lessons-with-andrew-tovshima.html#lesson-enquiry",
+      contactLabel: "Book / Contact Andrew",
+      offerings: {
+        inPerson: {
+          name: "In-person coaching",
+          packages: [
+            {
+              name: "Single In-Person Lesson",
+              label: "Single lesson",
+              sessions: 1,
+              price: 30000,
+              description: "A focused one-on-one session with Andrew Tovshima after the learner's needs, location, and schedule are confirmed."
+            },
+            {
+              name: "5-Lesson In-Person Package",
+              label: "5 lessons",
+              sessions: 5,
+              price: 135000,
+              description: "Five scheduled sessions with Andrew Tovshima for practical learning, guided practice, and steady improvement."
+            },
+            {
+              name: "10-Lesson In-Person Package",
+              label: "10 lessons",
+              sessions: 10,
+              price: 250000,
+              description: "Ten sessions with Andrew Tovshima for structured training and longer-term development."
+            }
+          ]
+        }
+      }
     }
   ]
 };
