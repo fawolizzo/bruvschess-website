@@ -18,21 +18,21 @@ window.BRUVSCHESS_COACHING = {
           name: "Single In-Person Lesson",
           label: "Single lesson",
           sessions: 1,
-          price: 30000,
+          price: 40000,
           description: "A focused private coaching session with a BruvsChess instructor assigned to suit the learner."
         },
         {
           name: "5-Lesson In-Person Package",
           label: "5 lessons",
           sessions: 5,
-          price: 135000,
+          price: 180000,
           description: "Five private sessions for consistent practice and guided progress with an assigned BruvsChess instructor."
         },
         {
           name: "10-Lesson In-Person Package",
           label: "10 lessons",
           sessions: 10,
-          price: 250000,
+          price: 330000,
           description: "Ten private sessions for structured training and longer-term development with an assigned BruvsChess instructor."
         }
       ]
