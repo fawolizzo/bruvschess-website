@@ -5,10 +5,44 @@ window.BRUVSCHESS_COACHING = {
     bankName: "Moniepoint MFB"
   },
   programs: {
+    inPersonLessons: {
+      name: "In-person private coaching",
+      title: "Book in-person private coaching",
+      description: "BruvsChess assigns a suitable coach after reviewing the learner's level, goals, location, and preferred schedule.",
+      packageHeading: "Choose an in-person lesson package",
+      assignmentNote: "Your coach is assigned according to the learner's needs, location, and availability.",
+      contactUrl: "#lesson-enquiry",
+      contactLabel: "Request in-person coaching",
+      packages: [
+        {
+          name: "Single In-Person Lesson",
+          label: "Single lesson",
+          sessions: 1,
+          price: 30000,
+          description: "A focused private coaching session with a BruvsChess instructor assigned to suit the learner."
+        },
+        {
+          name: "5-Lesson In-Person Package",
+          label: "5 lessons",
+          sessions: 5,
+          price: 135000,
+          description: "Five private sessions for consistent practice and guided progress with an assigned BruvsChess instructor."
+        },
+        {
+          name: "10-Lesson In-Person Package",
+          label: "10 lessons",
+          sessions: 10,
+          price: 250000,
+          description: "Ten private sessions for structured training and longer-term development with an assigned BruvsChess instructor."
+        }
+      ]
+    },
     onlineLessons: {
       name: "Online chess lessons",
       title: "Book an online lesson",
       description: "Online lessons are delivered by available BruvsChess instructors. We match each learner with a suitable instructor after reviewing their level, goals, and preferred schedule.",
+      packageHeading: "Choose an online lesson package",
+      assignmentNote: "Your instructor is assigned according to the learner's needs and availability.",
       contactUrl: "#lesson-enquiry",
       contactLabel: "Book an online lesson",
       packages: [

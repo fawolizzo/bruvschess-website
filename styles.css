@@ -1175,6 +1175,11 @@ h3 {
   background: linear-gradient(180deg, rgba(251, 248, 239, 0.98), rgba(243, 238, 227, 0.95));
 }
 
+#in-person-prices,
+#lesson-enquiry {
+  scroll-margin-top: 96px;
+}
+
 .streamlined-options .coaching-programs {
   max-width: 1180px;
   margin: 0 auto;
@@ -1882,6 +1887,12 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .private-coaching-page .contact,
+  .online-coaching-page .contact,
+  .coach-detail-page .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .private-lessons-copy {
     position: static;
   }
@@ -2019,6 +2030,8 @@ h3 {
   }
 
   .contact-form {
+    width: 100%;
+    min-width: 0;
     grid-template-columns: 1fr;
     border-radius: 22px;
   }

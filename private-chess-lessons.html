@@ -29,8 +29,8 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=wide-layout-2">
-    <link rel="stylesheet" href="payment.css?v=coach-menu">
+    <link rel="stylesheet" href="styles.css?v=mobile-booking-fix">
+    <link rel="stylesheet" href="payment.css?v=assigned-coach-pricing">
   </head>
   <body class="private-coaching-page">
     <header class="site-header" id="top">
@@ -81,9 +81,18 @@
             learner's age, level, goals, location, and preferred schedule.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#lesson-enquiry">Choose a coach and view prices</a>
+            <a class="button primary" href="#in-person-prices">View prices and book</a>
           </div>
         </div>
+      </section>
+
+      <section class="section streamlined-options" id="in-person-prices" aria-labelledby="in-person-prices-title">
+        <div class="section-heading">
+          <p class="eyebrow">In-person lesson prices</p>
+          <h2 id="in-person-prices-title">Choose an in-person lesson package.</h2>
+          <p>Prices are shown upfront. BruvsChess will assign a suitable coach after reviewing the learner's details and availability.</p>
+        </div>
+        <div class="coaching-programs" data-coaching-program="inPersonLessons" data-compact-program></div>
       </section>
 
       <section class="section contact" id="lesson-enquiry" aria-labelledby="lesson-enquiry-title">
@@ -92,8 +101,8 @@
             <p class="eyebrow">Start here</p>
             <h2 id="lesson-enquiry-title">Request a private lesson.</h2>
             <p>
-              Select a coach in the form to see that coach's lesson prices. We will confirm the
-              arrangement before payment.
+              Send the learner details after reviewing the prices above. Our team will assign a
+              suitable coach and confirm the arrangement before payment.
             </p>
           </div>
           <address class="office-card">
@@ -148,15 +157,14 @@
             </select>
           </label>
           <label class="form-field">
-            <span>Preferred coach</span>
-            <select name="coach" data-coach-select required>
-              <option value="">Select a coach</option>
-              <option value="not-sure">Not sure — help me choose</option>
+            <span>In-person package interest</span>
+            <select name="package_interest" required>
+              <option value="">Select one</option>
+              <option>Single In-Person Lesson</option>
+              <option>5-Lesson In-Person Package</option>
+              <option>10-Lesson In-Person Package</option>
             </select>
           </label>
-          <div class="selected-coach-pricing form-field-wide" data-selected-coach-pricing aria-live="polite">
-            <p>Select a coach to view their in-person lesson prices.</p>
-          </div>
           <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
@@ -189,7 +197,7 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="payment-config.js?v=andrew-tovshima"></script>
-    <script src="script.js?v=streamlined-programs"></script>
+    <script src="payment-config.js?v=assigned-coach-pricing"></script>
+    <script src="script.js?v=assigned-coach-pricing"></script>
   </body>
 </html>

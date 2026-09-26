@@ -388,8 +388,8 @@ const renderCoachingPrograms = () => {
         <section class="coach-offering" aria-label="${program.name} packages">
           <div class="coach-offering-heading">
             <span>${program.name}</span>
-            <h4${compactProgram ? ` id="${programKey}-title"` : ""}>Choose an online lesson package</h4>
-            <p>Your instructor is assigned according to the learner's needs and availability.</p>
+            <h4${compactProgram ? ` id="${programKey}-title"` : ""}>${program.packageHeading || `Choose a ${program.name.toLowerCase()} package`}</h4>
+            <p>${program.assignmentNote || program.description}</p>
           </div>
           <div class="coach-package-grid">${packages}</div>
         </section>
