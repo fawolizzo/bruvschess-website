@@ -29,8 +29,8 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=mobile-booking-fix">
-    <link rel="stylesheet" href="payment.css?v=assigned-coach-pricing">
+    <link rel="stylesheet" href="styles.css?v=pricing-visibility">
+    <link rel="stylesheet" href="payment.css?v=pricing-visibility">
   </head>
   <body class="private-coaching-page">
     <header class="site-header" id="top">
@@ -59,6 +59,7 @@
             </div>
           </div>
         </div>
+        <a href="private-chess-lessons.html#in-person-prices" aria-current="page">Prices</a>
         <a href="index.html#schools">Schools</a>
         <a href="coaches.html">Coaches</a>
         <a href="team.html?v=team-page">Team</a>
@@ -92,7 +93,23 @@
           <h2 id="in-person-prices-title">Choose an in-person lesson package.</h2>
           <p>Prices are shown upfront. BruvsChess will assign a suitable coach after reviewing the learner's details and availability.</p>
         </div>
-        <div class="coaching-programs" data-coaching-program="inPersonLessons" data-compact-program></div>
+        <div class="coaching-programs" data-coaching-program="inPersonLessons" data-compact-program>
+          <article class="coach-profile online-program-profile" aria-labelledby="inPersonLessons-title">
+            <section class="coach-offering" aria-label="In-person private coaching packages">
+              <div class="coach-offering-heading">
+                <span>In-person private coaching</span>
+                <h4 id="inPersonLessons-title">Choose an in-person lesson package</h4>
+                <p>Your coach is assigned according to the learner's needs, location, and availability.</p>
+              </div>
+              <div class="coach-package-grid">
+                <article class="coach-package-card"><div><span>Single lesson</span><h4>Single In-Person Lesson</h4></div><strong>₦40,000</strong><small>Single coaching lesson</small><p>A focused private coaching session with a BruvsChess instructor assigned to suit the learner.</p></article>
+                <article class="coach-package-card"><div><span>5 lessons</span><h4>5-Lesson In-Person Package</h4></div><strong>₦180,000</strong><small>₦36,000 per lesson</small><p>Five private sessions for consistent practice and guided progress with an assigned BruvsChess instructor.</p></article>
+                <article class="coach-package-card"><div><span>10 lessons</span><h4>10-Lesson In-Person Package</h4></div><strong>₦330,000</strong><small>₦33,000 per lesson</small><p>Ten private sessions for structured training and longer-term development with an assigned BruvsChess instructor.</p></article>
+              </div>
+              <p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p>
+            </section>
+          </article>
+        </div>
       </section>
 
       <section class="section contact" id="lesson-enquiry" aria-labelledby="lesson-enquiry-title">
@@ -158,13 +175,14 @@
           </label>
           <label class="form-field">
             <span>In-person package interest</span>
-            <select name="package_interest" required>
+            <select name="package_interest" data-package-select required>
               <option value="">Select one</option>
-              <option>Single In-Person Lesson</option>
-              <option>5-Lesson In-Person Package</option>
-              <option>10-Lesson In-Person Package</option>
+              <option data-price="40000">Single In-Person Lesson</option>
+              <option data-price="180000">5-Lesson In-Person Package</option>
+              <option data-price="330000">10-Lesson In-Person Package</option>
             </select>
           </label>
+          <p class="package-total" data-package-total aria-live="polite">Select a package to see its total price.</p>
           <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
@@ -198,6 +216,6 @@
     </footer>
 
     <script src="payment-config.js?v=restored-in-person-pricing"></script>
-    <script src="script.js?v=assigned-coach-pricing"></script>
+    <script src="script.js?v=pricing-visibility"></script>
   </body>
 </html>

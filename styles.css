@@ -681,6 +681,82 @@ h3 {
   justify-self: start;
 }
 
+.lesson-price-summary {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.lesson-price-group {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.lesson-price-group h3,
+.lesson-price-group p {
+  margin: 0;
+}
+
+.lesson-price-group h3 {
+  color: var(--purple-dark);
+  font-size: 1.15rem;
+}
+
+.lesson-price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.lesson-price-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.lesson-price-card span,
+.lesson-price-card small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.lesson-price-card strong {
+  color: var(--teal-dark);
+  font-size: 1.15rem;
+}
+
+.lesson-price-group .transport-included {
+  color: var(--purple-dark);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.price-detail-link {
+  justify-self: start;
+  font-weight: 900;
+}
+
+.package-total {
+  grid-column: 1 / -1;
+  margin: -0.45rem 0 0;
+  padding: 0.8rem 1rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(43, 33, 135, 0.12);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.package-total.has-total {
+  color: var(--purple-dark);
+  background: var(--gold-soft);
+}
+
 .payment-copy {
   display: grid;
   gap: 0.35rem;
@@ -1933,6 +2009,22 @@ h3 {
 }
 
 @media (max-width: 720px) {
+  .home-page main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-page main > .hero { order: 1; }
+  .home-page main > .private-lessons { order: 2; }
+  .home-page main > .intro { order: 3; }
+  .home-page main > .programs { order: 4; }
+  .home-page main > .schools { order: 5; }
+  .home-page main > .method { order: 6; }
+  .home-page main > .contact { order: 7; }
+
+  .lesson-price-grid {
+    grid-template-columns: 1fr;
+  }
   .site-header {
     min-height: 78px;
     padding-block: 0.7rem;
@@ -1999,6 +2091,18 @@ h3 {
 
   .home-page h1 {
     font-size: clamp(3rem, 17vw, 4.7rem);
+  }
+
+  .home-page .hero-brand-panel {
+    display: none;
+  }
+
+  .home-page .hero-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-page .hero-stats div {
+    padding: 0.8rem 0.45rem;
   }
 
   .about-logo-panel {

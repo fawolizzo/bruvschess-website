@@ -317,6 +317,17 @@
   -webkit-line-clamp: 4;
 }
 
+.coach-directory-card .coach-directory-price {
+  display: block;
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  color: var(--purple-dark);
+  background: rgba(15, 118, 110, 0.08);
+  border-radius: 10px;
+  font-weight: 800;
+  -webkit-line-clamp: unset;
+}
+
 .coach-directory-card ul {
   display: flex;
   flex-wrap: wrap;
@@ -457,6 +468,18 @@
 .coach-offering-heading h4,
 .coach-offering-heading p {
   margin: 0;
+}
+
+.transport-included {
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  color: var(--purple-dark);
+  background: rgba(184, 143, 62, 0.12);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
 .coach-offering-heading h4 {

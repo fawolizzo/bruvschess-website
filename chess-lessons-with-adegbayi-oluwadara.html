@@ -31,8 +31,8 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=wide-layout-2">
-    <link rel="stylesheet" href="payment.css?v=coach-detail">
+    <link rel="stylesheet" href="styles.css?v=pricing-visibility">
+    <link rel="stylesheet" href="payment.css?v=pricing-visibility">
   </head>
   <body class="coach-detail-page">
     <header class="site-header" id="top">
@@ -50,6 +50,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="about.html">About</a>
         <a href="index.html#programs">Programs</a>
+        <a href="private-chess-lessons.html#in-person-prices">Prices</a>
         <a href="index.html#schools">Schools</a>
         <a href="coaches.html">Coaches</a>
         <a href="team.html?v=team-page">Team</a>
@@ -77,7 +78,13 @@
         </div>
       </section>
       <section class="section coach-detail-content" id="coaching-options" aria-label="Adegbayi Oluwadara profile and lesson packages">
-        <div class="coach-profiles" data-coach-profiles="inPerson" data-coach-id="adegbayi-oluwadara" data-contact-url="#lesson-enquiry"></div>
+        <div class="coach-profiles" data-coach-profiles="inPerson" data-coach-id="adegbayi-oluwadara" data-contact-url="#lesson-enquiry">
+          <article class="coach-profile"><section class="coach-offering" aria-label="In-person coaching packages for Adegbayi Oluwadara"><div class="coach-offering-heading"><span>In-person coaching</span><h4>Adegbayi Oluwadara's lesson packages</h4><p>These prices apply specifically to Adegbayi Oluwadara.</p></div><div class="coach-package-grid">
+            <article class="coach-package-card"><div><span>Single lesson</span><h4>Single In-Person Lesson</h4></div><strong>₦30,000</strong><small>Single coaching lesson</small><p>A focused one-on-one session with Adegbayi Oluwadara.</p></article>
+            <article class="coach-package-card"><div><span>5 lessons</span><h4>5-Lesson In-Person Package</h4></div><strong>₦135,000</strong><small>₦27,000 per lesson</small><p>Five scheduled sessions for guided practice and steady improvement.</p></article>
+            <article class="coach-package-card"><div><span>10 lessons</span><h4>10-Lesson In-Person Package</h4></div><strong>₦250,000</strong><small>₦25,000 per lesson</small><p>Ten sessions for structured training and longer-term development.</p></article>
+          </div><p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p></section></article>
+        </div>
         <a class="button secondary back-to-coaches" href="coaches.html">Back to all coaches</a>
       </section>
 
@@ -134,14 +141,15 @@
           </label>
           <label class="form-field">
             <span>Preferred package</span>
-            <select name="preferred_package" required>
+            <select name="preferred_package" data-package-select required>
               <option value="">Select one</option>
-              <option>Single lesson</option>
-              <option>5 lessons</option>
-              <option>10 lessons</option>
+              <option data-price="30000">Single lesson</option>
+              <option data-price="135000">5 lessons</option>
+              <option data-price="250000">10 lessons</option>
               <option>Not sure yet</option>
             </select>
           </label>
+          <p class="package-total" data-package-total aria-live="polite">Select a package to see its total price.</p>
           <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
@@ -172,6 +180,6 @@
     </footer>
 
     <script src="payment-config.js?v=standard-coach-pricing"></script>
-    <script src="script.js?v=nav-dedupe"></script>
+    <script src="script.js?v=pricing-visibility"></script>
   </body>
 </html>

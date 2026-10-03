@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=clean-pages">
+    <link rel="stylesheet" href="styles.css?v=pricing-visibility">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,7 +39,7 @@
         "logo": "https://bruvschess.org/assets/bruvschess-logo-cropped.jpeg",
         "image": "https://bruvschess.org/assets/bruvschess-logo-cropped.jpeg",
         "telephone": "+2348030598899",
-        "priceRange": "Contact for pricing",
+        "priceRange": "₦30,000 to ₦330,000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Fatima Plaza, Suite A1, Ground floor, Wuye district",
@@ -111,6 +111,7 @@
             </div>
           </div>
         </div>
+        <a href="private-chess-lessons.html#in-person-prices">Prices</a>
         <a href="#schools">Schools</a>
         <a href="coaches.html">Coaches</a>
         <a href="team.html?v=team-page">Team</a>
@@ -237,6 +238,26 @@
             preferred schedule, and learning goals. Submit the request first; our team will confirm
             the lesson plan, availability, and fee before payment.
           </p>
+          <div class="lesson-price-summary" aria-label="Private lesson price summary">
+            <section class="lesson-price-group" aria-labelledby="home-in-person-prices">
+              <h3 id="home-in-person-prices">In-person lessons</h3>
+              <div class="lesson-price-grid">
+                <article class="lesson-price-card"><span>Single lesson</span><strong>From ₦30,000</strong><small>₦30,000 per lesson</small></article>
+                <article class="lesson-price-card"><span>5-lesson package</span><strong>From ₦135,000</strong><small>₦27,000 per lesson</small></article>
+                <article class="lesson-price-card"><span>10-lesson package</span><strong>From ₦250,000</strong><small>₦25,000 per lesson</small></article>
+              </div>
+              <p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p>
+              <a class="text-link price-detail-link" href="coaches.html">See coach by coach prices</a>
+            </section>
+            <section class="lesson-price-group" aria-labelledby="home-online-prices">
+              <h3 id="home-online-prices">Online lessons</h3>
+              <div class="lesson-price-grid">
+                <article class="lesson-price-card"><span>Single lesson</span><strong>₦30,000</strong><small>₦30,000 per lesson</small></article>
+                <article class="lesson-price-card"><span>5-lesson package</span><strong>₦135,000</strong><small>₦27,000 per lesson</small></article>
+                <article class="lesson-price-card"><span>10-lesson package</span><strong>₦240,000</strong><small>₦24,000 per lesson</small></article>
+              </div>
+            </section>
+          </div>
           <div class="booking-steps" aria-label="Private lesson booking steps">
             <div>
               <span>01</span>
@@ -298,8 +319,26 @@
               <option>In-person private lesson</option>
               <option>Small group lesson</option>
               <option>Evaluation lesson first</option>
+              <option>Online private lesson</option>
             </select>
           </label>
+          <label class="form-field form-field-wide">
+            <span>Package interest</span>
+            <select name="package_interest" data-package-select required>
+              <option value="">Select one</option>
+              <optgroup label="In-person lessons">
+                <option data-price="30000">Single In-Person Lesson</option>
+                <option data-price="135000">5-Lesson In-Person Package</option>
+                <option data-price="250000">10-Lesson In-Person Package</option>
+              </optgroup>
+              <optgroup label="Online lessons">
+                <option data-price="30000">Single Online Lesson</option>
+                <option data-price="135000">5-Lesson Online Package</option>
+                <option data-price="240000">10-Lesson Online Package</option>
+              </optgroup>
+            </select>
+          </label>
+          <p class="package-total" data-package-total aria-live="polite">Select a package to see its total price.</p>
           <label class="form-field">
             <span>State or location</span>
             <input type="text" name="location" placeholder="FCT Abuja, Lagos, Osun, Rivers, Edo, etc." required>
@@ -489,6 +528,6 @@
       <p>Chess education for schools, students, and families across FCT Abuja, Osun, Edo, Lagos, and Rivers.</p>
     </footer>
 
-    <script src="script.js?v=andrew-tovshima"></script>
+    <script src="script.js?v=pricing-visibility"></script>
   </body>
 </html>

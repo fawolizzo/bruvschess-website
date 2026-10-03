@@ -42,6 +42,16 @@ const enhanceProgramMenus = () => {
       coachesLinks.slice(1).forEach((link) => link.remove());
     }
 
+    let pricesLink = Array.from(siteNav.querySelectorAll("a")).find((link) => (
+      link.textContent.trim() === "Prices"
+    ));
+
+    if (!pricesLink) {
+      pricesLink = document.createElement("a");
+      pricesLink.href = "private-chess-lessons.html#in-person-prices";
+      pricesLink.textContent = "Prices";
+    }
+
     if (whatsappButton && siteNav.lastElementChild !== whatsappButton) {
       siteNav.append(whatsappButton);
     }
@@ -54,6 +64,7 @@ const enhanceProgramMenus = () => {
       existing.classList.add("nav-item", "has-submenu");
       parent?.classList.add("nav-parent");
       if (submenu) submenu.innerHTML = submenuMarkup;
+      existing.after(pricesLink);
       return;
     }
 
@@ -72,6 +83,7 @@ const enhanceProgramMenus = () => {
 
     item.append(parent, submenu);
     programLink.replaceWith(item);
+    item.after(pricesLink);
   });
 };
 
@@ -216,6 +228,7 @@ const renderSelectedCoachPricing = (select) => {
       <strong>${offering.name}</strong>
     </div>
     <div class="coach-package-grid">${packages}</div>
+    <p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p>
     <div class="selected-coach-bank">
       <span>Pay after your booking is confirmed</span>
       <strong>${bankTransfer.accountName}</strong>
@@ -290,6 +303,7 @@ const renderCoachProfiles = () => {
             <p>These prices apply specifically to ${coach.name}.</p>
           </div>
           <div class="coach-package-grid">${packages}</div>
+          <p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p>
         </section>
         <footer class="coach-profile-footer">
           <section class="coach-bank-transfer" aria-labelledby="${coach.id}-${offeringKey}-transfer-title">
@@ -327,6 +341,14 @@ const renderCoachDirectory = () => {
     coaches.forEach((coach) => {
       const card = document.createElement("a");
       const highlights = coach.highlights?.slice(0, 3).map((item) => `<li>${item}</li>`).join("") || "";
+      const lowestPackage = coach.offerings[offeringKey].packages.reduce((lowest, item) => (
+        item.sessions > 1 && (!lowest || item.price / item.sessions < lowest.price / lowest.sessions) ? item : lowest
+      ), null);
+      const perLesson = lowestPackage ? Math.round(lowestPackage.price / lowestPackage.sessions) : null;
+      const location = {
+        "im-bunmi-olape": "Lagos. ",
+        "adegbayi-oluwadara": "Lagos. "
+      }[coach.id] || "";
 
       card.className = "coach-directory-card";
       card.href = coach.profileUrl;
@@ -336,6 +358,7 @@ const renderCoachDirectory = () => {
           <span class="coach-directory-title">${coach.title}</span>
           <h3>${coach.name}</h3>
           <p>${coach.bio}</p>
+          <p class="coach-directory-price">${location}Service areas are confirmed during booking. In-person lessons from ${formatNaira(perLesson)} per lesson in a 10-lesson package.</p>
           ${highlights ? `<ul>${highlights}</ul>` : ""}
           <strong>View coach profile <span aria-hidden="true">→</span></strong>
         </div>
@@ -392,6 +415,7 @@ const renderCoachingPrograms = () => {
             <p>${program.assignmentNote || program.description}</p>
           </div>
           <div class="coach-package-grid">${packages}</div>
+          ${programKey === "inPersonLessons" ? `<p class="transport-included">In-person package prices include your coach's travel within his regular service area. There are no extra transport charges on top of the package price.</p>` : ""}
         </section>
         <footer class="coach-profile-footer">
           <section class="coach-bank-transfer" aria-labelledby="${programKey}-transfer-title">
@@ -434,7 +458,21 @@ document.addEventListener("click", async (event) => {
 document.addEventListener("change", (event) => {
   if (!(event.target instanceof HTMLSelectElement)) return;
   if (event.target.matches("[data-coach-select]")) renderSelectedCoachPricing(event.target);
+  if (event.target.matches("[data-package-select]")) updatePackageTotal(event.target);
 });
+
+const updatePackageTotal = (select) => {
+  const output = select.closest("form")?.querySelector("[data-package-total]");
+  if (!output) return;
+
+  const price = Number(select.selectedOptions[0]?.dataset.price);
+  output.textContent = price
+    ? `Package total: ${formatNaira(price)}`
+    : "Select a package to see its total price.";
+  output.classList.toggle("has-total", Boolean(price));
+};
+
+document.querySelectorAll("[data-package-select]").forEach(updatePackageTotal);
 
 const loadPaymentConfig = () => {
   if (getCoachingConfig()) {
