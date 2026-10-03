@@ -347,7 +347,9 @@ const renderCoachDirectory = () => {
       const perLesson = lowestPackage ? Math.round(lowestPackage.price / lowestPackage.sessions) : null;
       const location = {
         "im-bunmi-olape": "Lagos. ",
-        "adegbayi-oluwadara": "Lagos. "
+        "adegbayi-oluwadara": "Lagos. ",
+        "engr-abdulyazid-aliyu": "Abuja. ",
+        "andrew-tovshima": "Abuja. "
       }[coach.id] || "";
 
       card.className = "coach-directory-card";
